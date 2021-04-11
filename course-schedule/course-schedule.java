@@ -1,38 +1,46 @@
 class Solution {
+    Map<Integer, List<Integer>> vertices;
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int[] seen = new int[numCourses];
-        Map<Integer, List<Integer>> graph = new HashMap<>();
-        
-        for(int[]edge: prerequisites){
-            
-            if(!graph.containsKey(edge[1])){
-                graph.put(edge[1], new LinkedList<>());
-            }
-            
-            graph.get(edge[1]).add(edge[0]);
+        vertices = new HashMap<Integer, List<Integer>>();
+        for (var edge: prerequisites) {
+            var list = vertices.getOrDefault(edge[0], new ArrayList<Integer>());
+            list.add(edge[1]);
+            vertices.put(edge[0], list);
         }
-        
-        for(int i = 0; i < numCourses; i++){
-            if(!dfs(i, seen, graph)) return false;
+        var visited = new HashSet<Integer>();
+        var stack = new Stack<Integer>();
+        for (int i=0; i<numCourses; i++) {
+            if (!visited.contains(i)) {
+                if(hasCycle(i, visited, stack)) return false;
+            }
         }
         return true;
     }
     
-    public boolean dfs(int index, int[] seen, Map<Integer, List<Integer>> graph){
-        if(!graph.containsKey(index)){
-            seen[index] = 2;
-            return true;
-        }
-        
-        seen[index] = 1;
-        for(int i: graph.get(index)){
-            if(seen[i] == 1) return false;
-            if(seen[i] == 0){
-                if(!dfs(i, seen, graph)) return false;
+    public boolean hasCycle(int vertex, Set<Integer> visited, Stack<Integer> stack, Set<Integer> visitedCurr) {
+        visited.add(vertex);
+        visitedCurr.add(vertex);
+        for(var nbr: vertices.getOrDefault(vertex, new ArrayList<Integer>())) {
+            if (!visited.contains(nbr)) {
+                if (hasCycle(nbr, visited, stack, visitedCurr)) return true;
+            }
+            else if (visitedCurr.contains(nbr)) {
+                return true;
             }
         }
-        
-        seen[index] = 2;
-        return true;
+        visitedCurr.remove(vertex);
+        stack.push(vertex);
+        return false;
+    }
+    
+    public boolean hasCycle(int vertex, Set<Integer> visited, Stack<Integer> stack) {
+        return hasCycle(vertex, visited, stack, new HashSet<Integer>());
+    }
+    
+    public static void print(Object o, String sep) {
+        System.out.print(o + sep);
+    }
+    public static void print(Object o) {
+        print(o, "\n");
     }
 }
