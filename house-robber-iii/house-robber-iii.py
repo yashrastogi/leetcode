@@ -4,26 +4,15 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+def rec(node):
+    if not node:
+        return [0,0]
+    l = rec(node.left)
+    r = rec(node.right)
+    return [node.val + l[1] + r[1], max(l) + max(r)]
+
 class Solution:
-    def rob(self, root: TreeNode) -> int:
-        memo = {}
-        def rec(node, skipLevel):
-            if not node:
-                return 0
-            if node in memo:
-                if skipLevel in memo[node]:
-                    return memo[node][skipLevel]
-            sum = rec(node.left, not skipLevel) + rec(node.right, not skipLevel)
-            sum2 = rec(node.left, skipLevel) + rec(node.right, skipLevel)
-            if not skipLevel:
-                sum += node.val
-            # print(memo)
-            memo[node] = memo.setdefault(node, {})
-            memo[node].update({skipLevel: max(sum, sum2)})
-            return memo[node][skipLevel]
-            
-        case1 = rec(root, False)
-        case2 = rec(root, True)
-        print(case1, case2)
-        return max(case1, case2)
+    def rob(self, root: TreeNode) -> int:    
+        return max(rec(root))
         
