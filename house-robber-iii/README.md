@@ -1,3 +1,4 @@
+[Discussion Post (created on 25/3/2021 at 12:0)](https://leetcode.com/problems/house-robber-iii/discuss/?currentPage=1&orderBy=hot&query=)  
 <h2>337. House Robber III</h2><h3>Medium</h3><hr><div><p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called <code>root</code>.</p>
 
 <p>Besides the <code>root</code>, each house has one and only one parent house. After a tour, the smart thief realized that all houses in this place form a binary tree. It will automatically contact the police if <strong>two directly-linked houses were broken into on the same night</strong>.</p>
