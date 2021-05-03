@@ -4,10 +4,17 @@ class Solution:
         Do not return anything, modify matrix in-place instead.
         """
         lenm = len(m)
+        # algorithm to transpose square matrix in place, swap all elements in left of diagonal with right of diagonal
         for i in range(lenm):
-            for j in range(i+1,lenm):
+            for j in range(0,i):
                 temp = m[i][j]
                 m[i][j] = m[j][i]
                 m[j][i] = temp
-        for coli in range(lenm):
-            m[coli] = m[coli][::-1]
+
+        # reverse every row in matrix
+        for i in range(lenm):
+            for j in range(int(lenm/2)):
+                temp = m[i][j]
+                m[i][j] = m[i][lenm-1-j]
+                m[i][lenm-1-j] = temp
+                
