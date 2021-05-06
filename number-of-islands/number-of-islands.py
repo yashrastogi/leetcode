@@ -12,9 +12,10 @@ class Solution:
                 
             
         islands = 0
-        for i, row in enumerate(grid):
-            for j, el in enumerate(row):
-                if el == '1':
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1':
                     islands += 1
                     dfs(i, j)
+        
         return islands
