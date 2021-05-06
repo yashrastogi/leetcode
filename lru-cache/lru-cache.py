@@ -1,31 +1,24 @@
 class LRUCache:
-
     def __init__(self, capacity: int):
-        self.curr_rank = 0
-        self.cache = {}
-        self.recent = {}
+        self.cache = OrderedDict()
         self.capacity = capacity
     
-    def _set_rank(self, key):
-        self.recent[key] = self.curr_rank
-        self.curr_rank += 1
+    def _reset_rank(self, key, put=False):
+        if key in self.cache:
+            self.cache.move_to_end(key, last=False)
+        
 
     def get(self, key: int) -> int:
         if key in self.cache:
-            self._set_rank(key)
+            self._reset_rank(key)
             return self.cache[key]
         return -1
 
     def put(self, key: int, value: int) -> None:
-        exists = True if key in self.cache else False
         self.cache[key] = value
-        self._set_rank(key)
-        if not exists:
-            if len(self.cache) > self.capacity:
-                tupl = min(self.recent.items(), key=lambda x: x[1])
-                self.recent.pop(tupl[0])
-                self.cache.pop(tupl[0])
-        
+        self._reset_rank(key)
+        if len(self.cache) > self.capacity:
+            self.cache.popitem()
             
 
 # Your LRUCache object will be instantiated and called as such:
