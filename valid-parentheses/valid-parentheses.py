@@ -1,15 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        deq = deque()
+        stack = []
         br = {']': '[', '}': '{', ')': '('}
         for c in s:
             if c in br.values():
-                deq.append(c)
-            elif deq:
-                if br[c] != deq.pop():
+                stack.append(c)
+            elif stack:
+                if br[c] != stack.pop():
                     return False
             else:
                 return False
-        if deq:
+        if stack:
             return False
         return True
