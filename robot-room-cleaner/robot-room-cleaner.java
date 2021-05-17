@@ -46,8 +46,4 @@ class Solution {
         r.turnRight();
         r.turnRight();
     }
-    
-    public void print(Object o) {
-        System.out.println(o);
-    }
 }
