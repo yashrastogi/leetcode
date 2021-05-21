@@ -1,13 +1,8 @@
-<h2>75. Sort Colors</h2><h3>Medium</h3><hr><div><p>Given an array <code>nums</code> with <code>n</code> objects colored red, white, or blue, sort them <strong><a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a>&nbsp;</strong>so that objects of the same color are adjacent, with the colors in the order red, white, and blue.</p>
+<h2>75. Sort Colors</h2><h3>Medium</h3><hr><div><p>Given an array <code>nums</code> with <code>n</code> objects colored red, white, or blue, sort them <strong><a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a> </strong>so that objects of the same color are adjacent, with the colors in the order red, white, and blue.</p>
 
-<p>Here, we will use the integers <code>0</code>, <code>1</code>, and <code>2</code> to represent the color red, white, and blue respectively.</p>
+<p>We will use the integers <code>0</code>, <code>1</code>, and <code>2</code> to represent the color red, white, and blue, respectively.</p>
 
-<p><strong>Follow up:</strong></p>
-
-<ul>
-	<li>Could you&nbsp;solve this problem without using&nbsp;the library's sort function?</li>
-	<li>Could you come up with a&nbsp;one-pass algorithm using only <code>O(1)</code> constant space?</li>
-</ul>
+<p>You must solve this problem without using the library's sort function.</p>
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -31,4 +26,7 @@
 	<li><code>1 &lt;= n &lt;= 300</code></li>
 	<li><code>nums[i]</code> is <code>0</code>, <code>1</code>, or <code>2</code>.</li>
 </ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong>&nbsp;Could you come up with a one-pass algorithm using only&nbsp;constant extra space?</p>
 </div>
