@@ -1,21 +1,19 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        sum_nums = sum(nums)
-        if sum_nums % 2 != 0:
+        totalSum = sum(nums)
+        if totalSum % 2 != 0:
             return False
-        subset_sum = sum_nums / 2
+        tSum = int(totalSum/2)
+        ret = False
+        
         @cache
-        def recurse(n, sums):
-            if n == len(nums):
-                return False
-            if sums > subset_sum:
-                return False
-            if sums == 0:
-                return True
-            return recurse(n+1, sums) or recurse(n+1, sums-nums[n])
+        def rec(idx, sums):
+            nonlocal ret, tSum
+            if ret: return
+            if idx == len(nums): return
+            if sums == tSum: ret = True
+            rec(idx+1, sums + nums[idx])
+            rec(idx+1, sums)
         
-        return recurse(0, subset_sum)
-            
-            
-        
-        
+        rec(0, 0)
+        return ret
