@@ -1,25 +1,25 @@
 class Solution:
     def wallsAndGates(self, rooms: List[List[int]]) -> None:
-        ROOM, GATE, WALL = 2147483647, 0, -1
-        
+        WALL, GATE, ROOM = -1, 0, 2147483647
         queue = []
         
-        def bfs():
-            nonlocal queue
-            directions = [(0,1), (1,0), (0,-1), (-1,0)]
-            while queue:
-                i, j = queue.pop(0)
-                for d in directions:
-                    ix, jx = i+d[0], j+d[1]
-                    if ix >= 0 and jx >= 0 \
-                    and ix < len(rooms) and jx < len(rooms[0]) \
-                    and rooms[ix][jx] == ROOM:
-                        rooms[ix][jx] = rooms[i][j]+1
-                        queue.append((ix, jx))
+        for i in range(len(rooms)):
+            for j in range(len(rooms[0])):
+                if rooms[i][j] == GATE:
+                    queue.append((i, j, 0))
         
-        for x in range(len(rooms)):
-            for y in range(len(rooms[0])):
-                if rooms[x][y] == GATE:
-                    queue.append((x, y))
+        directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+        visited = set()
+        while queue:
+            i, j, depth = queue.pop(0)
+            if rooms[i][j] == ROOM:
+                rooms[i][j] = depth
+            for d in directions:
+                ix, jx, depthx = i+d[0], j+d[1], depth+1
+                if ix>=0 and jx>=0 \
+                and ix<len(rooms) and jx<len(rooms[0]) \
+                and rooms[ix][jx] == ROOM \
+                and (ix, jx) not in visited:
+                    visited.add((ix, jx))
+                    queue.append((ix, jx, depthx))
         
-        bfs()        
