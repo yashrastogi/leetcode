@@ -9,9 +9,10 @@ class Solution:
         #                           |            |
         #      if nums[-2] > nums[-3] | if nums[-1] > nums[-3]
         # above logic can be condensed in below for loop
-        
+        max_dp = -float('inf')
         for i in reversed(range(len(nums))):
             for j in range(i+1, len(nums)):
                 if nums[j] > nums[i]:
                     dp[i] = max(dp[i], dp[j] + 1)
-        return max(dp)
+            max_dp = max(max_dp, dp[i])
+        return max_dp
