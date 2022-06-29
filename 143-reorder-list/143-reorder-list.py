@@ -5,11 +5,11 @@
 #         self.next = next
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        lookup = {}
+        lookup = []
         list_len = 0
         curr = head
         while curr:
-            lookup[list_len] = curr
+            lookup.append(curr)
             list_len += 1
             curr = curr.next
         
