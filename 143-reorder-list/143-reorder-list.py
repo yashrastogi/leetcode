@@ -7,7 +7,6 @@ class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         lookup = {}
         list_len = 0
-        
         curr = head
         while curr:
             lookup[list_len] = curr
