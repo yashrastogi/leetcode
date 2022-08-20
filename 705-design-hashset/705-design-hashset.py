@@ -4,7 +4,7 @@ class MyHashSet:
         self.data = [-1] * 1000001
 
     def add(self, key: int) -> None:
-        self.data[key] = key
+        self.data[key] = 1
 
     def remove(self, key: int) -> None:
         self.data[key] = -1
