@@ -28,7 +28,6 @@ class Codec:
         """Decodes your encoded data to tree.
         """
         data_split = data.split(' ')[:-1]
-        print(data_split)
         if not len(data_split): return None
         root = TreeNode(data_split[0])
         q = deque([root])
