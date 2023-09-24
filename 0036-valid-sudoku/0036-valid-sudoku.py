@@ -12,15 +12,14 @@ class Solution:
                     col_set.add(board[j][i])
                 elif board[j][i] != '.':
                     return False
-        for i in range(0, 9, 3):
-            for j in range(0, 9, 3):
-                box_set = set()
-                for k in range(i, i + 3):
-                    for l in range(j, j + 3):
-                        if board[k][l] not in box_set:
-                            box_set.add(board[k][l])
-                        elif board[k][l] != '.':
-                            return False
+                if i % 3 == 0 and j % 3 == 0:
+                    box_set = set()
+                    for k in range(i, i + 3):
+                        for l in range(j, j + 3):
+                            if board[k][l] not in box_set:
+                                box_set.add(board[k][l])
+                            elif board[k][l] != '.':
+                                return False
         return True
 
             
