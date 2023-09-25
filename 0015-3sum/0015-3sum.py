@@ -16,4 +16,4 @@ class Solution:
                     i += 1
                 elif csum > 0:
                     j -= 1
-        return list(ret)
+        return ret
