@@ -1,12 +1,14 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
+        news = ''
         s = s.upper()
         for c in s:
-            if not (ord(c) in range(65, 91) or ord(c) in range(48,58)):
-                s = s.replace(c, '')
-        i, j = 0, len(s) - 1
+            if ord(c) in range(65, 91) or ord(c) in range(48,58):
+                news += c
+        print(news)
+        i, j = 0, len(news) - 1
         while i < j:
-            if s[i] != s[j]:
+            if news[i] != news[j]:
                 return False
             i += 1
             j -= 1
