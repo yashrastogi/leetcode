@@ -1,10 +1,6 @@
 class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        news = ''
-        s = s.lower()
-        for c in s:
-            if ord(c) in range(ord('a'), ord('z')+1) or ord(c) in range(ord('0'),ord('9') + 1):
-                news += c
+    def isPalindrome(self, news: str) -> bool:
+        news = ''.join(filter(str.isalnum, news)).lower()
         i, j = 0, len(news) - 1
         while i < j:
             if news[i] != news[j]:
