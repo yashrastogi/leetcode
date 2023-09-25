@@ -4,8 +4,7 @@ class Solution:
             return 0
         max_len = 1
         set_nums = set(nums)
-        i = 0
-        for num in nums:
+        for num in set_nums:
             if num - 1 not in set_nums:
                 last_num = num
                 curr_len = 1
