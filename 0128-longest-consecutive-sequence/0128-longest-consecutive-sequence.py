@@ -5,13 +5,12 @@ class Solution:
         max_len = 1
         set_nums = set(nums)
         i = 0
-        while i < len(nums):
-            if nums[i] - 1 not in set_nums:
-                last_num = nums[i]
+        for num in nums:
+            if num - 1 not in set_nums:
+                last_num = num
                 curr_len = 1
                 while last_num + 1 in set_nums:
                     curr_len += 1
                     last_num += 1
                 max_len = max(max_len, curr_len)
-            i += 1
         return max_len
