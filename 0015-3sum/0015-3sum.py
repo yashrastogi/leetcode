@@ -9,8 +9,7 @@ class Solution:
                 csum = nums[i] + nums[j] + nums[x]
                 if csum == 0:
                     temp = (nums[x], nums[i], nums[j])
-                    if temp not in ret:
-                        ret.add(temp)
+                    ret.add(temp)
                     i += 1
                     j -= 1
                 elif csum < 0:
