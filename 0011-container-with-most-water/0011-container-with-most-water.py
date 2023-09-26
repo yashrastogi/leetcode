@@ -7,8 +7,6 @@ class Solution:
             maxAr = max(maxAr, area)
             if arr[lo] < arr[hi]:
                 lo += 1
-            elif arr[hi] < arr[lo]:
-                hi -= 1
             else:
-                lo += 1     
+                hi -= 1
         return maxAr
