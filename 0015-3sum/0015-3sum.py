@@ -15,7 +15,7 @@ class Solution:
                     ret.append(temp)
                     i += 1
                     j -= 1
-                    while i <len(nums) and nums[i] == nums[i - 1]:
+                    while i < len(nums) and nums[i] == nums[i - 1]:
                         i += 1
                     while j >= 0 and nums[j] == nums[j+1]:
                         j -= 1
