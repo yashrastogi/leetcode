@@ -1,11 +1,10 @@
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        curr_char = ""
-        count = 0
+        curr_char = chars[0]
+        count = 1
         writer_ptr = 0
-        for i, char in enumerate(chars):
-            if curr_char == "":
-                curr_char = char
+        for i in range(1, len(chars)):
+            char = chars[i]
             if curr_char != char:
                 chars[writer_ptr] = curr_char
                 writer_ptr += 1
