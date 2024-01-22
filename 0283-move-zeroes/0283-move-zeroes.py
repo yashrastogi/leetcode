@@ -12,6 +12,6 @@ class Solution:
                 count_zero += 1
                 for j in range(i + 1, len(nums)):
                     nums[j - 1], nums[j] = nums[j], nums[j - 1]
-                print(i, count_zero, nums)
+                # print(i, count_zero, nums)
             if nums[i] != 0:
                 i += 1
