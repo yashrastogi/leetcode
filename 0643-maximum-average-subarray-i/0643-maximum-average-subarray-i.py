@@ -4,6 +4,5 @@ class Solution:
         maxAverage = csum / k
         for i in range(1, len(nums) - k + 1):
             csum = csum - nums[i - 1] + nums[i + k - 1]
-            average = csum / k
-            maxAverage = max(maxAverage, average)
+            maxAverage = max(maxAverage, csum / k)
         return maxAverage
