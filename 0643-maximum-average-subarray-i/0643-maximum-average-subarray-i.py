@@ -4,5 +4,6 @@ class Solution:
         max_csum = csum
         for i in range(1, len(nums) - k + 1):
             csum = csum - nums[i - 1] + nums[i + k - 1]
-            max_csum = max(csum, max_csum)
+            if csum > max_csum:
+                max_csum = csum
         return max_csum / k
