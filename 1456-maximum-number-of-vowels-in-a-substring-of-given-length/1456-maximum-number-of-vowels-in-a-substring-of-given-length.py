@@ -6,12 +6,12 @@ class Solution:
             if s[i] in vowels_list:
                 vowels_count += 1
         max_vowels_count = vowels_count
-        start = 0
+        start_prev = 0
         for end in range(k, len(s)):
             if s[end] in vowels_list:
                 vowels_count += 1
-            if s[start] in vowels_list:
+            if s[start_prev] in vowels_list:
                 vowels_count -= 1
-            start += 1
+            start_prev += 1
             max_vowels_count = max(max_vowels_count, vowels_count)
         return max_vowels_count
