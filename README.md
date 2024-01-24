@@ -1,2 +1,1 @@
-# Code for solved LeetCode problems
-Created using [LeetHub](https://github.com/QasimWani/LeetHub).
+# Code for problems I have solved on LeetCode
