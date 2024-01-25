@@ -22,8 +22,6 @@ class Solution:
                     i += 1
                     usedPowerup = False
         if longestOneSubsequence == len(nums):
-            return len(nums)-1
+            return len(nums) - 1
         else:
             return longestOneSubsequence
-
-
