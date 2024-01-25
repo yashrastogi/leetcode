@@ -24,10 +24,6 @@ public:
             }
         }
 
-        if (longestOneSubsequence == nums.size()) {
-            return nums.size() - 1;
-        } else {
-            return longestOneSubsequence;
-        }
+        return min(longestOneSubsequence, int(nums.size()) - 1);
     }
 };
