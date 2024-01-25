@@ -6,13 +6,11 @@ public:
 
         while (j < nums.size()) {
             if (nums[j] == 1) {
-                if (usedPowerup) {
+                if (usedPowerup)
                     longestOneSubsequence = max(longestOneSubsequence, j - i);
-                }
-                if (!usedPowerup) {
+                if (!usedPowerup)
                     longestOneSubsequence =
                         max(longestOneSubsequence, j - i + 1);
-                }
                 j += 1;
             } else if (!usedPowerup) {
                 longestOneSubsequence = max(longestOneSubsequence, j - i);
