@@ -3,15 +3,13 @@ class Solution:
         cols = Counter()
         rows = Counter()
         for i in range(len(grid)):
-            cur_col = ''
-            for j in range(len(grid[0])):
-                cur_col += str(grid[i][j]) + ' '
-            cols[cur_col] += 1
+            cur_col = []
+            cols[str(grid[i])] += 1
         for i in range(len(grid[0])):
-            cur_row = ''
+            cur_row = []
             for j in range(len(grid)):
-                cur_row += str(grid[j][i]) + ' '
-            rows[cur_row] += 1
+                cur_row += [grid[j][i]]
+            rows[str(cur_row)] += 1
         ret = 0
         for key in rows:
             if key in cols:
