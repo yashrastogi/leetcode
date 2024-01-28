@@ -12,8 +12,6 @@ class Solution:
             for j in range(len(grid)):
                 cur_row += str(grid[j][i]) + ' '
             rows[cur_row] += 1
-        print(rows)
-        print(cols)
         ret = 0
         for key in rows:
             if key in cols:
