@@ -26,14 +26,14 @@ class Solution:
                 if string[i].isnumeric():
                     reps = reps * 10 + int(string[i])
                 elif string[i] == "[":
-                    stack.append([ret, reps])
+                    stack.append((ret, reps))
                     reps = 0
                     ret = ""
                 elif string[i] == "]":
                     popped = stack.pop()
                     ret = popped[0] + ret * popped[1]
                 else:
-                    ret+=string[i]
+                    ret += string[i]
                 i += 1
             return ret
 
