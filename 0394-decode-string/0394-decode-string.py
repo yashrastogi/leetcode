@@ -22,18 +22,18 @@ class Solution:
             ret = ""
             reps = 0
             stack = []
-            substr = None
             while i < len(string):
-                print(stacl)
                 if string[i].isnumeric():
                     reps = reps * 10 + int(string[i])
                 elif string[i] == "[":
-                    stack.append([i + 1, reps])
+                    stack.append([ret, reps])
                     reps = 0
+                    ret = ""
                 elif string[i] == "]":
                     popped = stack.pop()
-                    stack[-1].append(string[popped[0]:i] * popped[1])
-
+                    ret = popped[0] + ret * popped[1]
+                else:
+                    ret+=string[i]
                 i += 1
             return ret
 
