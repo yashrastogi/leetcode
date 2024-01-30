@@ -37,4 +37,4 @@ class Solution:
                 i += 1
             return ret
 
-        return repeatStack(s)
+        return repeatRecursion(s)
