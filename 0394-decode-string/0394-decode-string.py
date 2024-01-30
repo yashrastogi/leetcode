@@ -37,4 +37,4 @@ class Solution:
                 i += 1
             return ret
 
-        return repeatRecursion(s)
+        return repeatRecursion(s,0)[0]
