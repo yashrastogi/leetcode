@@ -1,7 +1,5 @@
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        ret = {"R": "Radiant", "D": "Dire"}
-
         senators = defaultdict(list)
         for i, ch in enumerate(senate):
             senators[ch].append(i)
@@ -9,21 +7,13 @@ class Solution:
         i = 0
         while True:
             if not senators["R"]:
-                return ret['D']
+                return "Dire"
             elif not senators["D"]:
-                return ret['R']
+                return "Radiant"
             if senators["R"][0] == i:
                 senators["R"].append(senators["R"].pop(0))
-                if senators["D"]:
-                    senators["D"].pop(0)
-                else:
-                    return ret["R"]
+                senators["D"].pop(0)
             elif senators["D"][0] == i:
                 senators["D"].append(senators["D"].pop(0))
-                if senators["R"]:
-                    senators["R"].pop(0)
-                else:
-                    return ret["D"]
-            i += 1
-            if i == len(senate):
-                i = 0
+                senators["R"].pop(0)
+            i = (i + 1) % len(senate)
