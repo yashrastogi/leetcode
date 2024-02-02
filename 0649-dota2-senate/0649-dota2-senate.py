@@ -8,7 +8,6 @@ class Solution:
 
         i = 0
         while True:
-            print(senators, i)
             if not senators["R"]:
                 return ret['D']
             elif not senators["D"]:
