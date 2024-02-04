@@ -8,21 +8,14 @@ class Solution:
         oddPrev = None
         evenPrev = None
         while odd and even:
-            if odd:
-                # print(odd.val, end=' ')
-                if odd.next:
-                    # print('=> ',odd.next.next)
+            if odd and odd.next:
                     oddPrev = odd
                     odd = odd.next.next
                     oddPrev.next = odd
-            if even:
-                # print(even.val, end=' ')
-                if even.next:
-                    # print('=> ',even.next.next)
+            if even and even.next:
                     evenPrev = even
                     even = even.next.next
                     evenPrev.next = even
-        # print(odd, oddPrev, evenStart)
         if odd:
             odd.next = evenStart
         else:
