@@ -11,8 +11,8 @@ class Solution:
                 return 0
             return (
                 int(root.val >= max_val)
-                + dfs(root.left, max_val=max(max_val, root.val))
-                + dfs(root.right, max_val=max(max_val, root.val))
+                + dfs(root.left, max(max_val, root.val))
+                + dfs(root.right, max(max_val, root.val))
             )
 
         return dfs(root)
