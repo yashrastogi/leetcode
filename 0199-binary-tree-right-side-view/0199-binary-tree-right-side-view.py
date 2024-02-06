@@ -17,7 +17,7 @@ class Solution:
             if depth != prevDepth:
                 prevDepth = depth
                 ret.append(prevElem.val)
-            prevElem = curr 
+            prevElem = curr
             if curr.left:
                 q.append((curr.left, depth + 1))
             if curr.right:
