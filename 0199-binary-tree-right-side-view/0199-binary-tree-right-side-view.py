@@ -1,26 +1,24 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         ret = []
         if not root:
             return ret
-        q = [(root, 0)]
-        prevDepth = 0
-        prevElem = root
+        
+        q = deque([(root, 0)])  # Use deque for efficient popping from left
+        prevDepth = -1  # Initialize prevDepth to -1 to handle the first node
+        
         while q:
-            curr, depth = q.pop(0)
+            curr, depth = q.popleft()
+            
             if depth != prevDepth:
+                # If the depth changes, add the value of the previous element
+                ret.append(curr.val)
                 prevDepth = depth
-                ret.append(prevElem.val)
-            prevElem = curr
-            if curr.left:
-                q.append((curr.left, depth + 1))
+            
+            # Add the right child first to process right side view
             if curr.right:
                 q.append((curr.right, depth + 1))
-        ret.append(prevElem.val)
+            if curr.left:
+                q.append((curr.left, depth + 1))
+        
         return ret
