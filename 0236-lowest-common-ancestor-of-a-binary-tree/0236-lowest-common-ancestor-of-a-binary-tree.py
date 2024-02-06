@@ -9,21 +9,16 @@ class Solution:
                 return True
             return dfs(root.left, findNode) or dfs(root.right, findNode)
 
-        def dfs2(root, depth=0):
+        def dfs2(root):
             if not root:
                 return None
-            a = dfs2(root.left, depth + 1)
-            b = dfs2(root.right, depth + 1)
-            if a and b:
-                if a[1] > b[1]:
-                    return a
-                else:
-                    return b
-            elif a:
+            a = dfs2(root.left)
+            b = dfs2(root.right)
+            if a:
                 return a
             elif b:
                 return b
             elif dfs(root, p) and dfs(root, q):
-                return (root, depth)
+                return root
 
-        return dfs2(root)[0]
+        return dfs2(root)
