@@ -1,7 +1,7 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        def findMin(root):
-            if not root.left: return root
+        def findMin(root, parent):
+            if not root.left: return (root, parent)
             return findMin(root.left)
 
         def findKey(root, parent=None, isLeft=False):
@@ -33,18 +33,7 @@ class Solution:
             else:
                 key_node[1].right = key_node[0].left
         if key_node[0].left and key_node[0].right: # two children
-            min_node = findMin(key_node[0].right)
-            key_node[0].val = min_node.val
-            print(min_node)
+            min_node = findMin(key_node[0].right, key_node[0])
+            key_node[0].val = min_node[0].val
+            min_node[1].right = None
         return root
-
-    def createBST(self, arr, ibegin, iend):
-        if ibegin == iend:
-            return TreeNode(arr[ibegin])
-        elif ibegin > iend:
-            return None
-        mid = (ibegin + iend) // 2
-        node = TreeNode(arr[mid])
-        node.left = self.createBST(arr, ibegin, mid - 1)
-        node.right = self.createBST(arr, mid + 1, iend)
-        return node
