@@ -1,38 +1,41 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        def dfs(root):
-            if not root:
-                return list()
-            ret = dfs(root.left)
-            ret.append(root.val)
-            ret.extend(dfs(root.right))
-            return ret
+        def findMin(root):
+            if not root.left: return root
+            return findMin(root.left)
 
-        def dfs2(root, parent):
+        def findKey(root, parent=None, isLeft=False):
             if not root:
                 return
             if root.val == key:
-                return (root, parent)
-            return dfs2(root.left, root) or dfs2(root.right, root)
-
-        del_node = dfs2(root, None)
-        if not del_node:
-            return root
-        arr = dfs(del_node[0])
-        arr.remove(key)
-        if len(arr) == 0:
-            if not del_node[1]:
-                return None
+                return (root, parent, isLeft)
+            elif key > root.val:
+                return findKey(root.right, root, False)
             else:
-                if del_node[1].right and del_node[1].right.val == del_node[0].val:
-                    del_node[1].right = None
-                    return root
-                elif del_node[1].left and del_node[1].left.val == del_node[0].val:
-                    del_node[1].left = None
-                    return root
-        del_node[0].val = arr[0]
-        del_node[0].left = None
-        del_node[0].right = self.createBST(arr, 1, len(arr) - 1)
+                return findKey(root.left, root, True)
+
+        key_node = findKey(root)
+        if not key_node:
+            return root  # not found
+        if not key_node[0].left and not key_node[0].right:  # no children
+            if key_node[2]:
+                key_node[1].left = None
+            else:
+                key_node[1].right = None
+        if not key_node[0].left:  # only one child
+            if key_node[2]:
+                key_node[1].left = key_node[0].right
+            else:
+                key_node[1].right = key_node[0].right
+        if not key_node[0].right:  # only one child
+            if key_node[2]:
+                key_node[1].left = key_node[0].left
+            else:
+                key_node[1].right = key_node[0].left
+        if key_node[0].left and key_node[0].right: # two children
+            min_node = findMin(key_node[0].right)
+            key_node[0].val = min_node.val
+            print(min_node)
         return root
 
     def createBST(self, arr, ibegin, iend):
