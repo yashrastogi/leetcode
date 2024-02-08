@@ -19,10 +19,12 @@ class Solution:
             if not del_node[1]:
                 return None
             else:
-                if del_node[1].right.val and del_node[1].right.val == del_node[0].val:
+                if del_node[1].right and del_node[1].right.val == del_node[0].val:
                     del_node[1].right = None
-                elif del_node[1].left.val and del_node[1].left.val == del_node[0].val:
+                    return root
+                elif del_node[1].left and del_node[1].left.val == del_node[0].val:
                     del_node[1].left = None
+                    return root
         del_node[0].val = arr[0]
         del_node[0].left = None
         del_node[0].right = self.createBST(arr, 1, len(arr) - 1)
