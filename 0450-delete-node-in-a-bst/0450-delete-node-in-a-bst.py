@@ -17,6 +17,8 @@ class Solution:
         key_node = findKey(root)
         if not key_node:
             return root  # not found
+        if not key_node[1]:
+            return None
         if not key_node[0].left and not key_node[0].right:  # no children
             if key_node[2]:
                 key_node[1].left = None
