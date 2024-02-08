@@ -7,18 +7,25 @@ class Solution:
             ret.extend(dfs(root.right))
             return ret
         def dfs2(root, parent):
-            if not root: return (None, None)
+            if not root: return
             if root.val == key: return (root, parent)
             return dfs2(root.left, root) or dfs2(root.right, root)
         
-        del_node, del_node_parent = dfs2(root, None)
+        del_node = dfs2(root, None)
         if not del_node: return root
-        arr = dfs(del_node)
+        arr = dfs(del_node[0])
         arr.remove(key)
-        if len(arr) == 0: return None
-        del_node.val = arr[0]
-        del_node.left = None
-        del_node.right = self.createBST(arr, 1, len(arr) - 1)
+        if len(arr) == 0: 
+            if not del_node[1]:
+                return None
+            else:
+                if del_node[1].right.val and del_node[1].right.val == del_node[0].val:
+                    del_node[1].right = None
+                elif del_node[1].left.val and del_node[1].left.val == del_node[0].val:
+                    del_node[1].left = None
+        del_node[0].val = arr[0]
+        del_node[0].left = None
+        del_node[0].right = self.createBST(arr, 1, len(arr) - 1)
         return root
 
     def createBST(self, arr, ibegin, iend):
