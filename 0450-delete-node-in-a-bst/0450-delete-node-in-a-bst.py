@@ -15,6 +15,7 @@ class Solution:
         if not del_node: return root
         arr = dfs(del_node)
         arr.remove(key)
+        if len(arr) == 0: return None
         del_node.val = arr[0]
         del_node.left = None
         del_node.right = self.createBST(arr, 1, len(arr) - 1)
