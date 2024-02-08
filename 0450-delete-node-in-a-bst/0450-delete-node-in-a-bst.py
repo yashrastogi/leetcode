@@ -1,21 +1,26 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         def dfs(root):
-            if not root: return list()
+            if not root:
+                return list()
             ret = dfs(root.left)
             ret.append(root.val)
             ret.extend(dfs(root.right))
             return ret
+
         def dfs2(root, parent):
-            if not root: return
-            if root.val == key: return (root, parent)
+            if not root:
+                return
+            if root.val == key:
+                return (root, parent)
             return dfs2(root.left, root) or dfs2(root.right, root)
-        
+
         del_node = dfs2(root, None)
-        if not del_node: return root
+        if not del_node:
+            return root
         arr = dfs(del_node[0])
         arr.remove(key)
-        if len(arr) == 0: 
+        if len(arr) == 0:
             if not del_node[1]:
                 return None
             else:
