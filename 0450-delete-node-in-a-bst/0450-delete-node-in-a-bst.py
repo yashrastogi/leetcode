@@ -1,41 +1,25 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        def findMin(root, parent):
-            if not root.left: return (root, parent)
-            return findMin(root.left)
+        findMin = lambda node: findMin(node.left) if node.left else node
 
-        def findKey(root, parent=None, isLeft=False):
-            if not root:
+        def deleteHelper(node, key):
+            if not node:
                 return
-            if root.val == key:
-                return (root, parent, isLeft)
-            elif key > root.val:
-                return findKey(root.right, root, False)
-            else:
-                return findKey(root.left, root, True)
+            if key > node.val:
+                node.right = deleteHelper(node.right, key)
+            elif key < node.val:
+                node.left = deleteHelper(node.left, key)
+            else: # elif this is the node to delete
+                if not node.left: # one child
+                    return node.right
+                elif not node.right:
+                    return node.left
+                else: # two children
+                    successor = findMin(node.right)
+                    node.val = successor.val
+                    node.right = deleteHelper(node.right, successor.val)
+            return node
+        
+        return deleteHelper(root, key)
+                    
 
-        key_node = findKey(root)
-        if not key_node:
-            return root  # not found
-        if not key_node[1]:
-            return None
-        if not key_node[0].left and not key_node[0].right:  # no children
-            if key_node[2]:
-                key_node[1].left = None
-            else:
-                key_node[1].right = None
-        if not key_node[0].left:  # only one child
-            if key_node[2]:
-                key_node[1].left = key_node[0].right
-            else:
-                key_node[1].right = key_node[0].right
-        if not key_node[0].right:  # only one child
-            if key_node[2]:
-                key_node[1].left = key_node[0].left
-            else:
-                key_node[1].right = key_node[0].left
-        if key_node[0].left and key_node[0].right: # two children
-            min_node = findMin(key_node[0].right, key_node[0])
-            key_node[0].val = min_node[0].val
-            min_node[1].right = None
-        return root
