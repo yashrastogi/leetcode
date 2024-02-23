@@ -8,9 +8,7 @@ class Solution:
                 return 1
             ret_val = -1
             for d in graph[curr]:
-                if dest == d[0]:
-                    return d[1]
-                elif d[0] not in visited:
+                if d[0] not in visited:
                     test = dfs(d[0], dest)
                     if test != -1:
                         ret_val = d[1] * test
@@ -25,6 +23,6 @@ class Solution:
             if q[0] not in graph or q[1] not in graph:
                 res.append(-1)
             else:
-                res.append(dfs(q[0], q[1]))
-                visited.clear()
+            res.append(dfs(q[0], q[1]))
+            visited.clear()
         return res
