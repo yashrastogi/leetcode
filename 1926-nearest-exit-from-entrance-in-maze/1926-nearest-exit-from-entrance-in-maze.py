@@ -8,14 +8,7 @@ class Solution:
             curr = q[0][0]
             level = q[0][1]
             q.pop(0)
-            if (
-                curr[0] < 0
-                or curr[1] < 0
-                or curr[0] >= len(maze)
-                or curr[1] >= len(maze[0])
-                or maze[curr[0]][curr[1]] == "+"
-                or curr in visited
-            ):
+            if curr in visited:
                 continue
             visited.add(curr)
             if curr != ent and (
@@ -27,5 +20,12 @@ class Solution:
                 return level
             for d in directions:
                 cd = (curr[0] + d[0], curr[1] + d[1])
-                q.append((cd, level + 1))
+                if not (
+                    cd[0] < 0
+                    or cd[1] < 0
+                    or cd[0] >= len(maze)
+                    or cd[1] >= len(maze[0])
+                    or maze[cd[0]][cd[1]] == "+"
+                ):
+                    q.append((cd, level + 1))
         return -1
