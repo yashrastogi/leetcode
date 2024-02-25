@@ -2,7 +2,7 @@ class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         ent = tuple(entrance)
         visited = set()
-        directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+        directions = ((0, 1), (1, 0), (-1, 0), (0, -1))
         q = [(ent, 0)]
         while q:
             curr = q[0][0]
