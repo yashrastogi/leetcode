@@ -2,12 +2,9 @@ class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         ent = tuple(entrance)
         visited = set()
-        directions = ((0, 1), (1, 0), (-1, 0), (0, -1))
         q = [(ent, 0)]
         while q:
-            curr = q[0][0]
-            level = q[0][1]
-            q.pop(0)
+            curr, level = q.pop(0)
             if curr in visited:
                 continue
             visited.add(curr)
@@ -18,7 +15,7 @@ class Solution:
                 or curr[1] == len(maze[0]) - 1
             ):
                 return level
-            for d in directions:
+            for d in ((0, 1), (1, 0), (-1, 0), (0, -1)):
                 cd = (curr[0] + d[0], curr[1] + d[1])
                 if not (
                     cd[0] < 0
