@@ -1,27 +1,39 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        visited, ent = set(), tuple(entrance)
+        visited = set()
+        ent = tuple(entrance)
         q = deque([(ent, 0)])
+
         while q:
             curr, level = q.popleft()
             if curr in visited:
                 continue
+
             visited.add(curr)
+            x, y = curr
+
             if curr != ent and (
-                curr[0] == 0
-                or curr[0] == len(maze) - 1
-                or curr[1] == 0
-                or curr[1] == len(maze[0]) - 1
+                x == 0 or x == len(maze) - 1 or y == 0 or y == len(maze[0]) - 1
             ):
                 return level
-            for d in ((0, 1), (1, 0), (-1, 0), (0, -1)):
-                cd = (curr[0] + d[0], curr[1] + d[1])
-                if not (
-                    cd[0] < 0
-                    or cd[1] < 0
-                    or cd[0] >= len(maze)
-                    or cd[1] >= len(maze[0])
-                    or maze[cd[0]][cd[1]] == "+"
+
+            for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)):
+                nx, ny = x + dx, y + dy
+                if (
+                    0 <= nx < len(maze)
+                    and 0 <= ny < len(maze[0])
+                    and maze[nx][ny] == "."
                 ):
-                    q.append((cd, level + 1))
+                    q.append(((nx, ny), level + 1))
+
         return -1
+
+s = Solution()
+it = iter(stdin)
+f = open('user.out', 'w')
+
+for maze in it:
+    ent = loads(next(it))
+    f.write(dumps(s.nearestExit(loads(maze), ent)).replace(' ', '') + '\n')
+
+exit()
