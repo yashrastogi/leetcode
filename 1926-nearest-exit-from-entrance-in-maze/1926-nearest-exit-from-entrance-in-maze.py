@@ -1,9 +1,9 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         visited = set()
-        q = [(tuple(entrance), 0)]
+        q = deque([(tuple(entrance), 0)])
         while q:
-            curr, level = q.pop(0)
+            curr, level = q.popleft()
             if curr in visited:
                 continue
             visited.add(curr)
