@@ -1,39 +1,26 @@
 class Solution:
-    def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        visited = set()
-        ent = tuple(entrance)
-        q = deque([(ent, 0)])
+    def nearestExit(self, maze, entrance):
+        steps = 0
+        rows = len(maze)
+        columns = len(maze[0])
+        queue = deque([entrance])
+        maze[entrance[0]][entrance[1]] = '+'
+        options = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
-        while q:
-            curr, level = q.popleft()
-            if curr in visited:
-                continue
-
-            visited.add(curr)
-            x, y = curr
-
-            if curr != ent and (
-                x == 0 or x == len(maze) - 1 or y == 0 or y == len(maze[0]) - 1
-            ):
-                return level
-
-            for dx, dy in ((0, 1), (1, 0), (-1, 0), (0, -1)):
-                nx, ny = x + dx, y + dy
-                if (
-                    0 <= nx < len(maze)
-                    and 0 <= ny < len(maze[0])
-                    and maze[nx][ny] == "."
-                ):
-                    q.append(((nx, ny), level + 1))
-
+        while queue:
+            steps += 1
+            n = len(queue)
+            for _ in range(n):
+                current = queue.popleft()
+                for option in options:
+                    x = current[0] + option[0]
+                    y = current[1] + option[1]
+                    if x < 0 or x >= rows or y < 0 or y >= columns:
+                        continue
+                    if maze[x][y] == '+':
+                        continue
+                    if x == 0 or x == rows - 1 or y == 0 or y == columns - 1:
+                        return steps
+                    maze[x][y] = '+'
+                    queue.append([x, y])
         return -1
-
-s = Solution()
-it = iter(stdin)
-f = open('user.out', 'w')
-
-for maze in it:
-    ent = loads(next(it))
-    f.write(dumps(s.nearestExit(loads(maze), ent)).replace(' ', '') + '\n')
-
-exit()
