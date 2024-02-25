@@ -1,14 +1,13 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        ent = tuple(entrance)
         visited = set()
-        q = [(ent, 0)]
+        q = [(tuple(entrance), 0)]
         while q:
             curr, level = q.pop(0)
             if curr in visited:
                 continue
             visited.add(curr)
-            if curr != ent and (
+            if curr != tuple(entrance) and (
                 curr[0] == 0
                 or curr[0] == len(maze) - 1
                 or curr[1] == 0
