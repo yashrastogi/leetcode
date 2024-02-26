@@ -3,7 +3,7 @@ class Solution:
         
         nums = [-num for num in nums]
         heapify(nums)
-        ret = float("inf")
+        ret = 0
         for _ in range(k):
             ret = -heappop(nums)
         return ret
