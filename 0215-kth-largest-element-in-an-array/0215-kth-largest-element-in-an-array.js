@@ -1,5 +1,5 @@
-function findKthLargest(nums, k) {
-    let heap = new MaxPriorityQueue();
+var findKthLargest = function(nums, k) {
+    const heap = new MaxPriorityQueue();
     for (let i = 0; i < nums.length; i++) {
         heap.enqueue(nums[i]);
     }
