@@ -4,7 +4,7 @@ function findKthLargest(nums, k) {
         heap.enqueue(nums[i]);
     }
     let ret = 0;
-    for (let _ = 0; _ < k; _++) {
+    for (let i = 0; i < k; i++) {
         ret = heap.dequeue();
     }
     return ret.element;
