@@ -1,21 +1,19 @@
 class Solution {
     func maxScore(_ nums1: [Int], _ nums2: [Int], _ k: Int) -> Int {
-        var z = zip(nums1, nums2).sorted { $0.1 < $1.1 }
+        let z = zip(nums1, nums2).sorted { $0.1 < $1.1 }
         let n = nums1.count
         var minHeap = [Int]()
-        
-        for i in (n - k + 1)..<n {
-            heappush(&minHeap, z[i].0)
-            if minHeap.count > k {
-                heappop(&minHeap)
-            }
-        }
-        
         var maxScore = -1
-        for i in stride(from: n - k, through: 0, by: -1) {
+        var sum = 0
+        for i in (0 ..< n).reversed() {
             heappush(&minHeap, z[i].0)
-            maxScore = max(maxScore, minHeap.reduce(0, +) * z[i].1)
-            heappop(&minHeap)
+            sum += z[i].0
+            if minHeap.count > k {
+                sum -= heappop(&minHeap)
+            }
+            if (n-i) >= k {
+                maxScore = max(maxScore, sum * z[i].1)
+            }
         }
         return maxScore
     }
@@ -31,9 +29,9 @@ class Solution {
         }
     }
     
-    private func heappop(_ heap: inout [Int]) {
+    private func heappop(_ heap: inout [Int]) -> Int {
         heap.swapAt(0, heap.count - 1)
-        heap.removeLast()
+        let ret = heap.removeLast()
         var currentIndex = 0
         var leftChildIndex = 1
         var rightChildIndex = 2
@@ -53,5 +51,6 @@ class Solution {
             leftChildIndex = currentIndex * 2 + 1
             rightChildIndex = currentIndex * 2 + 2
         }
+        return ret
     }
 }
