@@ -5,7 +5,7 @@ class Solution {
         var minHeap = [Int]()
         var maxScore = -1
         var sum = 0
-        for i in (0 ..< n).reversed() {
+        for i in stride(from: n-1, through: 0, by: -1) {
             heappush(&minHeap, z[i].0)
             sum += z[i].0
             if minHeap.count > k {
