@@ -17,9 +17,6 @@ class Solution : GuessGame {
     }
 
     func binarySearch(_ lo: Int, _ hi: Int) -> Int {
-        if lo > hi {
-            return -1
-        }
         let mid = (lo + hi) / 2
         switch guess(mid) {
             case 1: return binarySearch(mid + 1, hi)
