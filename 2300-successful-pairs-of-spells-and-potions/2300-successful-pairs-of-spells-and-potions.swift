@@ -23,8 +23,7 @@ class Solution {
         var mid = (lo + hi) / 2
         if array[mid] < search {
             return binarySearch(mid + 1, hi, search, array)
-        }
-        else {
+        } else {
             return binarySearch(lo, mid - 1, search, array)
         }
     }
