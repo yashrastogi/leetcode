@@ -5,17 +5,15 @@ class Solution {
             return Int(ceil(Double(success) / Double(spell)))
         }
         var pairs = [Int](repeating: 0, count: spells.count)
-        
+
         for (index, searchVal) in searchValues.enumerated() {
-            let count = binarySearchCount(sortedPotions, searchVal)
+            let count = sortedPotions.count - binarySearch(sortedPotions, searchVal)
             pairs[index] = count
         }
         return pairs
     }
 
-    func binarySearchCount(_ array: [Int], _ search: Int) -> Int {
-        guard !array.isEmpty else { return 0 }
-        
+    func binarySearch(_ array: [Int], _ search: Int) -> Int {
         var low = 0
         var high = array.count - 1
         while low <= high {
@@ -26,6 +24,6 @@ class Solution {
                 high = mid - 1
             }
         }
-        return array.count - low
+        return low
     }
 }
