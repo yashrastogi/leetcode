@@ -2,7 +2,7 @@ class Solution {
     func findPeakElement(_ nums: [Int]) -> Int {
         switch nums.count {
         case 1: return 0
-        case 2: return nums[1] > nums[0] ? 1 : 2
+        case 2: return nums[1] > nums[0] ? 1 : 0
         default: break
         }
         for i in 0 ..< nums.count {
