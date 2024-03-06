@@ -1,6 +1,9 @@
 class Solution {
 public:
     int minEatingSpeed(std::vector<int>& piles, int h) {
+        cout.tie(0);
+        cin.tie(0);
+        ios_base::sync_with_stdio(0);
         int lo = 1, hi = *max_element(piles.begin(), piles.end());
         while (lo <= hi) {
             int k = (hi - lo) / 2 + lo;
