@@ -3,7 +3,7 @@ class Solution {
         var lo = 1
         var hi = piles.max()!
         while lo <= hi {
-            let k = (hi - lo) / 2 + lo
+            let k = (hi + lo) / 2
             let kSum = piles.map { Int(ceil(Double($0) / Double(k))) }.reduce(0, +)
             if kSum <= h {
                 hi = k - 1
