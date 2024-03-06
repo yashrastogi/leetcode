@@ -4,9 +4,9 @@ class Solution {
         while(lo < hi) {
             int mid = (hi - lo) / 2 + lo;
             if(nums[mid] < nums[mid + 1]) {
-                lo += 1;
+                lo = mid + 1;
             } else {
-                hi -= 1;
+                hi = mid;
             }
         }
         return lo;
