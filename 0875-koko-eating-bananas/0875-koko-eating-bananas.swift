@@ -16,16 +16,13 @@ class Solution {
 }
 
 func runCode() {
-    let s = Solution()
-    let fileURL = URL(fileURLWithPath: "user.out")
-    let outputStream = OutputStream(url: fileURL, append: false)!
+    var outputStream = OutputStream(url: URL(fileURLWithPath: "user.out"), append: false)!
     outputStream.open()
 
     while let pilesString = readLine(), let hString = readLine() {
         let piles = try! JSONDecoder().decode([Int].self, from: pilesString.data(using: .utf8)!)
         let h = try! JSONDecoder().decode(Int.self, from: hString.data(using: .utf8)!)
-        let result = s.minEatingSpeed(piles, h)
-        let resultString = String(result)
+        let resultString = String(Solution().minEatingSpeed(piles, h))
         outputStream.write(resultString, maxLength: resultString.utf8.count)
         outputStream.write("\n", maxLength: 1)
     }
