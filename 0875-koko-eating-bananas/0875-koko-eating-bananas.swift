@@ -15,19 +15,23 @@ class Solution {
     }
 }
 
-let s = Solution()
-let fileURL = URL(fileURLWithPath: "user.out")
-let outputStream = OutputStream(url: fileURL, append: false)!
-outputStream.open()
+func runCode() {
+    let s = Solution()
+    let fileURL = URL(fileURLWithPath: "user.out")
+    let outputStream = OutputStream(url: fileURL, append: false)!
+    outputStream.open()
 
-while let pilesString = readLine(), let hString = readLine() {
-    let piles = try! JSONDecoder().decode([Int].self, from: pilesString.data(using: .utf8)!)
-    let h = try! JSONDecoder().decode(Int.self, from: hString.data(using: .utf8)!)
-    let result = s.minEatingSpeed(piles, h)
-    let resultString = String(result)
-    outputStream.write(resultString, maxLength: resultString.utf8.count)
-    outputStream.write("\n", maxLength: 1)
+    while let pilesString = readLine(), let hString = readLine() {
+        let piles = try! JSONDecoder().decode([Int].self, from: pilesString.data(using: .utf8)!)
+        let h = try! JSONDecoder().decode(Int.self, from: hString.data(using: .utf8)!)
+        let result = s.minEatingSpeed(piles, h)
+        let resultString = String(result)
+        outputStream.write(resultString, maxLength: resultString.utf8.count)
+        outputStream.write("\n", maxLength: 1)
+    }
+
+    outputStream.close()
+    exit(EXIT_SUCCESS)
 }
 
-outputStream.close()
-exit(EXIT_SUCCESS)
+runCode()
