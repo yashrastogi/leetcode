@@ -5,7 +5,7 @@ public:
         int hi = *std::max_element(piles.begin(), piles.end());
         while (lo <= hi) {
             int k = (hi - lo) / 2 + lo;
-            int kSum = 0;
+            long kSum = 0;
             for (int pile : piles) {
                 kSum += std::ceil(static_cast<double>(pile) / k);
             }
