@@ -10,3 +10,9 @@ class Solution:
             elif kSum > h:
                 lo = k + 1
         return lo
+
+s = Solution()
+f = open('user.out', 'w')
+for piles, h in zip(map(loads, stdin), map(loads, stdin)):
+    f.write(dumps(s.minEatingSpeed(piles, h)).replace(' ', '') + '\n')
+exit()
