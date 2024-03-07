@@ -10,7 +10,7 @@ class Solution {
         "9": ["w", "x", "y", "z"],
     ]
 
-    func letterCombinations(_ digits: [Character]) -> [String] {
+    func letterCombinations(_ digits: String) -> [String] {
         func backtrack(_ i: Int, _ curr: inout String, _ res: inout [String]) {
             if i == digits.count {
                 res.append(curr)
@@ -22,16 +22,21 @@ class Solution {
                 curr.removeLast()
             }
         }
+        if digits.count < 1 {
+            return []
+        }
         var res: [String] = []
         var tempString = ""
         backtrack(0, &tempString, &res)
         return res
     }
+}
 
-    func letterCombinations(_ digits: String) -> [String] {
-        if digits.count < 1 {
-            return []
-        }
-        return letterCombinations(Array(digits))
-    }
+extension StringProtocol {
+    subscript(_ offset: Int) -> Element { self[index(startIndex, offsetBy: offset)] }
+    subscript(_ range: Range<Int>) -> SubSequence { prefix(range.lowerBound + range.count).suffix(range.count) }
+    subscript(_ range: ClosedRange<Int>) -> SubSequence { prefix(range.lowerBound + range.count).suffix(range.count) }
+    subscript(_ range: PartialRangeThrough<Int>) -> SubSequence { prefix(range.upperBound.advanced(by: 1)) }
+    subscript(_ range: PartialRangeUpTo<Int>) -> SubSequence { prefix(range.upperBound) }
+    subscript(_ range: PartialRangeFrom<Int>) -> SubSequence { suffix(Swift.max(0, count - range.lowerBound)) }
 }
