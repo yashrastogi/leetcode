@@ -11,14 +11,15 @@ class Solution {
     ]
 
     func letterCombinations(_ digits: [Character]) -> [String] {
-        func backtrack(i: Int, curr: String) {
+        func backtrack(_ i: Int, _ curr: String) {
             if i == digits.count {
                 res.append(curr)
                 return
             }
+            var curr = curr
             for ch in lookup[digits[i]]! {
                 curr += ch
-                curr += backtrack(i + 1, curr)
+                backtrack(i + 1, curr)
                 curr.removeLast()
             }
         }
