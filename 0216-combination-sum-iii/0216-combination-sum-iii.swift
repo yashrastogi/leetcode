@@ -6,7 +6,7 @@ class Solution {
                     res.append(curr)
                 }
                 return
-            } else if start > 9 || total >= n { 
+            } else if start > 9 || total >= n {
                 return
             }
             for num in start ... 9 {
@@ -15,6 +15,7 @@ class Solution {
                 curr.removeLast()
             }
         }
+
         var res: [[Int]] = []
         var tempCurr: [Int] = []
         backtrack(0, 0, 1, &tempCurr)
