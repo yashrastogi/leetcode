@@ -6,10 +6,10 @@ class Solution {
                     res.append(curr)
                 }
                 return
-            } else if start > 9 || total >= n {
+            } else if total >= n {
                 return
             }
-            for num in start ... 9 {
+            for num in start ..< 10 {
                 curr.append(num)
                 backtrack(times + 1, total + num, num + 1, &curr)
                 curr.removeLast()
