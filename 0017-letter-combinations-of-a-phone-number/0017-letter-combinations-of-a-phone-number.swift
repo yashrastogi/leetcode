@@ -12,27 +12,23 @@ class Solution {
         "9": ["w", "x", "y", "z"],
     ]
 
-    func letterCombinations(_ digits: [Character]) -> [String] {
-        func backtrack(_ idx: Int, _ curr: [String]) -> [String] {
-            if idx == digits.count {
-                return curr
-            }
-            var ret: [String] = []
-            for c in curr {
-                for char in lookup[digits[idx]]! {
-                    ret.append(c + char)
-                }
-            }
-            return backtrack(idx + 1, ret)
+    func backtrack(_ digits: [Character], _ idx: Int, _ curr: [String]) -> [String] {
+        if idx == digits.count {
+            return curr
         }
-
-        if digits.count < 1 {
-            return []
+        var ret: [String] = []
+        for c in curr {
+            for char in lookup[digits[idx]]! {
+                ret.append(c + char)
+            }
         }
-        return backtrack(0, [""])
+        return backtrack(digits, idx + 1, ret)
     }
 
     func letterCombinations(_ digits: String) -> [String] {
-        return letterCombinations(Array(digits))
+        if digits.count < 1 {
+            return []
+        }
+        return backtrack(Array(digits), 0, [""])
     }
 }
