@@ -10,23 +10,27 @@ class Solution {
         "9": ["w", "x", "y", "z"],
     ]
 
-    func backtrack(_ digits: [Character], _ idx: Int = 0, _ curr: [String] = [""]) -> [String] {
-        if idx == digits.count {
-            return curr
-        }
-        var ret: [String] = []
-        for c in curr {
-            for char in lookup[digits[idx]]! {
-                ret.append(c + char)
+    func letterCombinations(_ digits: [Character]) -> [String] {
+        func backtrack(i: Int, curr: String) {
+            if i == digits.count {
+                res.append(curr)
+                return
+            }
+            for ch in lookup[digits[i]]! {
+                curr += ch
+                curr += backtrack(i + 1, curr)
+                curr.removeLast()
             }
         }
-        return backtrack(digits, idx + 1, ret)
+        var res: [String] = []
+        backtrack(0, "")
+        return res
     }
 
     func letterCombinations(_ digits: String) -> [String] {
         if digits.count < 1 {
             return []
         }
-        return backtrack(Array(digits))
+        return letterCombinations(Array(digits))
     }
 }
