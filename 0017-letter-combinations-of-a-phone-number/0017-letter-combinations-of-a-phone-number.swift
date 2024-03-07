@@ -11,20 +11,20 @@ class Solution {
     ]
 
     func letterCombinations(_ digits: [Character]) -> [String] {
-        func backtrack(_ i: Int, _ curr: String) {
+        func backtrack(_ i: Int, _ curr: inout String, _ res: inout [String]) {
             if i == digits.count {
                 res.append(curr)
                 return
             }
-            var curr = curr
             for ch in lookup[digits[i]]! {
                 curr += ch
-                backtrack(i + 1, curr)
+                backtrack(i + 1, &curr, &res)
                 curr.removeLast()
             }
         }
         var res: [String] = []
-        backtrack(0, "")
+        var tempString = ""
+        backtrack(0, &tempString, &res)
         return res
     }
 
