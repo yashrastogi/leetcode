@@ -1,5 +1,3 @@
-import Foundation
-
 class Solution {
     var lookup: [Character: [String]] = [
         "2": ["a", "b", "c"],
@@ -12,7 +10,7 @@ class Solution {
         "9": ["w", "x", "y", "z"],
     ]
 
-    func backtrack(_ digits: [Character], _ idx: Int, _ curr: [String]) -> [String] {
+    func backtrack(_ digits: [Character], _ idx: Int = 0, _ curr: [String] = [""]) -> [String] {
         if idx == digits.count {
             return curr
         }
@@ -29,6 +27,6 @@ class Solution {
         if digits.count < 1 {
             return []
         }
-        return backtrack(Array(digits), 0, [""])
+        return backtrack(Array(digits))
     }
 }
