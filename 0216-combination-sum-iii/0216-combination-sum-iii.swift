@@ -1,12 +1,15 @@
 class Solution {
     func combinationSum3(_ k: Int, _ n: Int) -> [[Int]] {
         func backtrack(_ times: Int, _ total: Int, _ curr: inout [Int], _ visited: inout Set<Int>) {
+            
             if times == k {
                 if curr.reduce(0, +) == n {
                     if !res.contains(curr.sorted()) {
                         res.insert(curr)
                     }
                 }
+                return
+            } else if total >= n {
                 return
             }
             for num in 1 ... 9 {
