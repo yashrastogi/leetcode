@@ -1,7 +1,7 @@
 class Solution:
     def combinationSum3(self, k: int, n: int) -> [[int]]:
-        def backtrack(times: int, total: int, curr: [int]):
-            if times == k:
+        def backtrack(total: int, curr: [int]):
+            if len(curr) == k:
                 if total == n:
                     res.append(curr.copy())
                 return
@@ -9,10 +9,11 @@ class Solution:
                 return
             for num in range(curr[-1] + 1 if curr else 1, 10):
                 curr.append(num)
-                backtrack(times + 1, total + num, curr)
+                backtrack(total + num, curr)
                 curr.pop()
+
 
         res = []
         tempCurr = []
-        backtrack(0, 0, tempCurr)
+        backtrack(0, tempCurr)
         return res
