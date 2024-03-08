@@ -1,6 +1,8 @@
 class Solution {
     func minCostClimbingStairsIterative(_ cost: [Int]) -> Int {
-        var dp = cost
+        var dp = Array(repeating: -1, count: cost.count)
+        dp[0] = cost[0]
+        dp[1] = cost[1]
         for i in stride(from: 2, to: cost.count, by: 1) {
             dp[i] = min(dp[i - 1], dp[i - 2]) + cost[i]
         }
