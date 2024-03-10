@@ -7,7 +7,6 @@ class Solution {
                 memo[i][j] = memo[i + 1][j] + memo[i][j + 1]
             }
         }
-
         return memo[0][0]
     }
 
@@ -21,8 +20,13 @@ class Solution {
     }
 
     func uniquePaths(_ m: Int, _ n: Int) -> Int {
-        memo = Array(repeating: Array(repeating: 1, count: n), count: m)
-        // return uniquePathsRecursive(m - 1, n - 1)
-        return uniquePathsIterative(m, n)
+        let recursive = true
+        if recursive {
+            memo = Array(repeating: Array(repeating: 1, count: n), count: m)
+            return uniquePathsRecursive(m - 1, n - 1)
+        } else {
+            memo = Array(repeating: Array(repeating: 1, count: n), count: m)
+            return uniquePathsIterative(m, n)
+        }
     }
 }
