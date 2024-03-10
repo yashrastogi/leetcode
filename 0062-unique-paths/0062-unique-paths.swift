@@ -22,7 +22,7 @@ class Solution {
 
     func uniquePaths(_ m: Int, _ n: Int) -> Int {
         memo = Array(repeating: Array(repeating: 1, count: n), count: m)
-        return uniquePathsRecursive(m - 1, n - 1)
-        // return uniquePathsIterative(m, n)
+        // return uniquePathsRecursive(m - 1, n - 1)
+        return uniquePathsIterative(m, n)
     }
 }
