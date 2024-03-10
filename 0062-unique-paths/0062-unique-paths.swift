@@ -20,7 +20,7 @@ class Solution {
     }
 
     func uniquePaths(_ m: Int, _ n: Int) -> Int {
-        let recursive = true
+        let recursive = false
         if recursive {
             memo = Array(repeating: Array(repeating: 1, count: n), count: m)
             return uniquePathsRecursive(m - 1, n - 1)
