@@ -13,7 +13,7 @@ class Solution {
     func uniquePathsRecursive(_ m: Int, _ n: Int) -> Int {
         guard m >= 0 && n >= 0 else { return 0 }
         if m == 0 && n == 0 { return 1 }
-        if memo[m][n] == 1 {
+        if memo[m][n] == -1 {
             memo[m][n] = uniquePathsRecursive(m - 1, n) + uniquePathsRecursive(m, n - 1)
         }
         return memo[m][n]
@@ -22,7 +22,7 @@ class Solution {
     func uniquePaths(_ m: Int, _ n: Int) -> Int {
         let recursive = false
         if recursive {
-            memo = Array(repeating: Array(repeating: 1, count: n), count: m)
+            memo = Array(repeating: Array(repeating: -1, count: n), count: m)
             return uniquePathsRecursive(m - 1, n - 1)
         } else {
             memo = Array(repeating: Array(repeating: 1, count: n), count: m)
