@@ -52,7 +52,7 @@ class Solution {
     }
 
     public int longestCommonSubsequence(String text1, String text2) {
-        boolean useRecursion = true;
+        boolean useRecursion = false;
         int m = text1.length();
         int n = text2.length();
         dp = new int[m][n];
