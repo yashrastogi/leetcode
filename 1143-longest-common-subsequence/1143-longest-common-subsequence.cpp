@@ -10,8 +10,6 @@ public:
             }
             if (flag) {
                 dp[i][0] = 1;
-            } else {
-                dp[i][0] = 0;
             }
         }
         flag = false;
@@ -21,8 +19,6 @@ public:
             }
             if (flag) {
                 dp[0][j] = 1;
-            } else {
-                dp[0][j] = 0;
             }
         }
         for (int i = 1; i < text1.size(); i++) {
@@ -41,7 +37,7 @@ public:
         if (i >= text1.size() || j >= text2.size()) {
             return 0;
         }
-        if (dp[i][j] == -1) {
+        if (dp[i][j] == 0) {
             if (text1[i] == text2[j]) {
                 dp[i][j] = 1 + recursive(text1, text2, i + 1, j + 1);
             } else {
@@ -53,7 +49,7 @@ public:
     }
 
     int longestCommonSubsequence(string text1, string text2) {
-        dp = vector<vector<int>>(text1.size(), vector<int>(text2.size(), -1));
+        dp = vector<vector<int>>(text1.size(), vector<int>(text2.size(), 0));
         // int ans = recursive(text1, text2);
         int ans = iterative(text1, text2);
         return ans;
