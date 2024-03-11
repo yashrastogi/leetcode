@@ -37,7 +37,7 @@ class Solution {
     }
 
     func longestCommonSubsequence(_ text1: String, _ text2: String) -> Int {
-        let useRecursion = false
+        let useRecursion = true
         var ans = 0
         if useRecursion {
             dp = Array(repeating: Array(repeating: -1, count: text2.count), count: text1.count)
