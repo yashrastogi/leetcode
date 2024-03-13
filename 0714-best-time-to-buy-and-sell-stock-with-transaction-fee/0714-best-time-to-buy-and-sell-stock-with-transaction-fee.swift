@@ -1,25 +1,25 @@
 class Solution {
     func maxProfitIterative(_ prices: [Int], _ fee: Int) -> Int {
-        var dp = Array(repeating: Array(repeating: 0, count: 2), count: prices.count)
         // [i][0]: value when not holding any stock
-        dp[0][0] = 0
+        var dp00 = 0
         // [i][1]: value when holding a stock
-        dp[0][1] = -prices[0]
+        var dp01 = -prices[0]
         for i in 1 ..< prices.count {
-            dp[i][0] = max(dp[i - 1][1] + prices[i] - fee, dp[i - 1][0])
-            dp[i][1] = max(dp[i - 1][0] - prices[i], dp[i - 1][1])
+            let oldDp00 = dp00
+            dp00 = max(dp01 + prices[i] - fee, dp00)
+            dp01 = max(oldDp00 - prices[i], dp01)
         }
-        return max(dp[prices.count - 1][0], dp[prices.count - 1][1])
+        return max(dp00, dp01)
     }
 
-    var memo: [Int: Int] = [:]
+    var memo = [[Int]: Int]()
 
     func maxProfitRecursive(_ prices: [Int], _ fee: Int) -> Int {
         func recursion(_ i: Int = 0, _ currValue: Int = 0, _ boughtStock: Bool = false) -> Int {
             if i == prices.count {
                 return currValue
             }
-            let key = (i << 1) | (boughtStock ? 1 : 0)
+            let key = [i, currValue, boughtStock ? 1 : 0]
             if let memoized = memo[key] {
                 return memoized
             }
