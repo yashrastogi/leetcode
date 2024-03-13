@@ -12,8 +12,8 @@ class Solution {
         return max(dp00, dp01)
     }
 
-    func maxProfitRecursive(_ prices: [Int], _ fee: Int, memo: [[Int]: Int] = [:]) -> Int {
-        var memo = memo
+    func maxProfitRecursive(_ prices: [Int], _ fee: Int) -> Int {
+        var memo = [[Int]: Int]()
 
         func recursion(_ i: Int = 0, _ currValue: Int = 0, _ boughtStock: Bool = false) -> Int {
             if i == prices.count {
@@ -41,6 +41,7 @@ class Solution {
     }
 
     func maxProfit(_ prices: [Int], _ fee: Int) -> Int {
+        // return maxProfitRecursive(prices, fee)
         return maxProfitIterative(prices, fee)
     }
 }
