@@ -12,9 +12,9 @@ class Solution {
         return max(dp00, dp01)
     }
 
-    var memo = [[Int]: Int]()
+    func maxProfitRecursive(_ prices: [Int], _ fee: Int, memo: [[Int]: Int] = [:]) -> Int {
+        var memo = memo
 
-    func maxProfitRecursive(_ prices: [Int], _ fee: Int) -> Int {
         func recursion(_ i: Int = 0, _ currValue: Int = 0, _ boughtStock: Bool = false) -> Int {
             if i == prices.count {
                 return currValue
@@ -36,6 +36,7 @@ class Solution {
             memo[key] = result
             return result
         }
+
         return recursion()
     }
 
