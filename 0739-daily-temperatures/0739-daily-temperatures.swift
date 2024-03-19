@@ -3,7 +3,7 @@ class Solution {
         var stack = [Int]()
         var answer = Array(repeating: 0, count: temps.count)
         for (i, temp) in temps.enumerated() {
-            while !stack.isEmpty && temps[stack.last!] < temp {
+            while let last = stack.last, temps[last] < temp {
                 let j = stack.removeLast()
                 answer[j] = i - j
             }
