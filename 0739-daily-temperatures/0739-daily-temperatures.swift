@@ -1,13 +1,13 @@
 class Solution {
     func dailyTemperatures(_ temps: [Int]) -> [Int] {
-        var stack = [(Int, Int)]()
+        var stack = [Int]()
         var answer = Array(repeating: 0, count: temps.count)
         for (i, temp) in temps.enumerated() {
-            while !stack.isEmpty && stack.last!.1 < temp {
-                let el = stack.removeLast()
-                answer[el.0] = i - el.0
+            while !stack.isEmpty && temps[stack.last!] < temp {
+                let j = stack.removeLast()
+                answer[j] = i - j
             }
-            stack.append((i, temp))
+            stack.append(i)
         }
         return answer
     }
