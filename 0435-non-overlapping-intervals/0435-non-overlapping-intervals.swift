@@ -4,11 +4,10 @@ class Solution {
         var end = -50001
         var removeCount = 0
         for i in 0 ..< intervals.count {
-            let interval = intervals[i]
-            if interval[0] < end {
+            if intervals[i][0] < end {
                 removeCount += 1
             } else {
-                end = interval[1]
+                end = intervals[i][1]
             }
          }
         return removeCount
