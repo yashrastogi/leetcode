@@ -1,7 +1,6 @@
 class Solution {
     func merge(_ intervals: [[Int]]) -> [[Int]] {
-        var intervals = intervals
-        intervals.sort { $0[0] < $1[0] }
+        var intervals = intervals.sorted { $0[0] < $1[0] }
         var start = intervals[0][0], end = intervals[0][1]
         var newIntervals = [[Int]]([])
         for interval in intervals {
