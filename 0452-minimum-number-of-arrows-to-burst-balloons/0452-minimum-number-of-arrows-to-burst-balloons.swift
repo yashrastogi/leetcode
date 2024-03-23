@@ -7,8 +7,9 @@ class Solution {
             if interval[0] > curr[1] {
                 shootArrow += 1
                 curr = interval
-            } 
-            curr = [min(curr[0], interval[0]), min(curr[1], interval[1])]
+            } else {
+                curr = [min(curr[0], interval[0]), min(curr[1], interval[1])]
+            }
         }
         return shootArrow
     }
