@@ -1,9 +1,32 @@
+import java.util.*;
+
 class Solution {
-    private int minPathSumRecursive(int[][] grid) {
+    public int minPathSumIterative(int[][] grid) {
+        int[][] dp = new int[grid.length][grid[0].length];
+        dp[0][0] = grid[0][0];
+
+        for (int i = 1; i < grid.length; i++) {
+            dp[i][0] = dp[i - 1][0] + grid[i][0];
+        }
+
+        for (int j = 1; j < grid[0].length; j++) {
+            dp[0][j] = dp[0][j - 1] + grid[0][j];
+        }
+
+        for (int i = 1; i < grid.length; i++) {
+            for (int j = 1; j < grid[0].length; j++) {
+                dp[i][j] = Math.min(dp[i][j - 1] + grid[i][j], dp[i - 1][j] + grid[i][j]);
+            }
+        }
+
+        return dp[grid.length - 1][grid[0].length - 1];
+    }
+
+    public int minPathSumRecursive(int[][] grid) {
         int maxLimit = 40001;
         int[][] memo = new int[grid.length][grid[0].length];
-        for (int i = 0; i < grid.length; i++) {
-            Arrays.fill(memo[i], -1);
+        for (int[] row : memo) {
+            Arrays.fill(row, -1);
         }
 
         return dfs(0, 0, grid, memo, maxLimit);
@@ -18,17 +41,12 @@ class Solution {
         if (memo[i][j] != -1) {
             return memo[i][j];
         }
-        int minSum = maxLimit;
-        int[][] directions = {{0, 1}, {1, 0}};
-        for (int[] direction : directions) {
-            int d0 = direction[0], d1 = direction[1];
-            minSum = Math.min(minSum, dfs(i + d0, j + d1, grid, memo, maxLimit) + grid[i][j]);
-        }
-        memo[i][j] = minSum;
+        memo[i][j] = Math.min(dfs(i, j + 1, grid, memo, maxLimit) + grid[i][j],
+                dfs(i + 1, j, grid, memo, maxLimit) + grid[i][j]);
         return memo[i][j];
     }
 
     public int minPathSum(int[][] grid) {
-        return minPathSumRecursive(grid);
+        return minPathSumIterative(grid);
     }
 }
