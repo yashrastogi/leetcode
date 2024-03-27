@@ -29,6 +29,6 @@ class Solution {
     }
 
     func minPathSum(_ grid: [[Int]]) -> Int {
-        return minPathSumIterative(grid)
+        return minPathSumRecursive(grid)
     }
 }
