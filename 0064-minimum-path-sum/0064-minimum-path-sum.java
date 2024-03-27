@@ -46,6 +46,6 @@ class Solution {
     }
 
     public int minPathSum(int[][] grid) {
-        return minPathSumIterative(grid);
+        return minPathSumRecursive(grid);
     }
 }
