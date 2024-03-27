@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public int minPathSumIterative(int[][] grid) {
         int[][] dp = grid;
-        
+
         for (int i = 1; i < grid.length; i++) {
             dp[i][0] = dp[i - 1][0] + grid[i][0];
         }
