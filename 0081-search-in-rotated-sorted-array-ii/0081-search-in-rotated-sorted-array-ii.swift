@@ -1,30 +1,30 @@
 class Solution {
-    func search(_ nums: [Int], _ target: Int) -> Bool {
-        func findHighest(_ lo: Int = 0, _ hi: Int = nums.count - 1) -> Int {
-            var maxNum = -Int.max, maxNumI = -1
-            for i in lo ... hi {
-                if nums[i] > maxNum {
-                    maxNum = nums[i]
-                    maxNumI = i
-                }
-            }
-            return maxNumI
+  func search(_ nums: [Int], _ target: Int) -> Bool {
+    var lo = 0, hi = nums.count - 1
+    while lo <= hi {
+      let mid = (lo + hi) / 2
+      if nums[mid] == target {
+        return true
+      } else if nums[lo] == nums[mid] && mid != lo {
+        lo += 1
+      } else if nums[mid] == nums[hi] && hi != lo {
+        hi -= 1
+      } else if nums[lo] <= nums[mid] {
+        // left half is sorted
+        if target < nums[mid] && target >= nums[lo] {
+          hi = mid - 1
+        } else {
+          lo = mid + 1
         }
-
-        func binarySearch(_ startIndex: Int, _ lo: Int = 0, _ hi: Int = nums.count - 1) -> Bool {
-            guard lo <= hi else { return false }
-            let mid = (lo + hi) / 2
-            let midIndex = (startIndex + mid) % nums.count
-            if nums[midIndex] == target {
-                return true
-            } else if nums[midIndex] < target {
-                return binarySearch(startIndex, mid + 1, hi)
-            } else {
-                return binarySearch(startIndex, lo, mid - 1)
-            }
+      } else {
+        // right half is sorted
+        if target > nums[mid] && target <= nums[hi] {
+          lo = mid + 1
+        } else {
+          hi = mid - 1
         }
-        
-        let startIndex = (findHighest() + 1) % nums.count
-        return binarySearch(startIndex)
+      }
     }
+    return false
+  }
 }
