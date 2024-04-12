@@ -4,13 +4,11 @@ class Solution {
         for num in nums {
             counter[num, default: 0] += 1
         }
-        var maxFreq = 0, maxFreqVal = -1
         for (key, val) in counter {
-            if val > maxFreq {
-                maxFreq = val
-                maxFreqVal = key
+            if val > nums.count / 2 {
+                return key
             }
         }
-        return maxFreqVal
+        return 0
     }
 }
