@@ -1,19 +1,17 @@
 public class Solution {
     public int majorityElement(int[] nums) {
-        Arrays.sort(nums);
         int lastNum = Integer.MAX_VALUE;
-        int lastNumFreq = 0;
+        int lastNumCount = 0;
+        
         for (int num : nums) {
-            if (lastNum != num) {
+            if (lastNumCount == 0) {
                 lastNum = num;
-                lastNumFreq = 1;
+                lastNumCount = 1;
             } else {
-                lastNumFreq++;
-            }
-            if (lastNumFreq > nums.length / 2) {
-                return lastNum;
+                lastNumCount += lastNum == num ? 1 : -1;
             }
         }
-        return 0;
+        
+        return lastNum;
     }
 }
