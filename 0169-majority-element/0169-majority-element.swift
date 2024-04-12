@@ -4,9 +4,7 @@ class Solution {
         for num in nums {
             let temp = (counter[num] ?? 0) + 1
             counter[num] = temp
-            if temp > nums.count / 2 {
-                return num
-            }
+            if temp > nums.count / 2 { return num }
         }
         return 0
     }
