@@ -1,11 +1,17 @@
 public class Solution {
     public int majorityElement(int[] nums) {
-        Map<Integer, Integer> counter = new HashMap<>();
+        Arrays.sort(nums);
+        int lastNum = Integer.MAX_VALUE;
+        int lastNumFreq = 0;
         for (int num : nums) {
-            int temp = counter.getOrDefault(num, 0) + 1;
-            counter.put(num, temp);
-            if (temp > nums.length / 2) {
-                return num;
+            if (lastNum != num) {
+                lastNum = num;
+                lastNumFreq = 1;
+            } else {
+                lastNumFreq++;
+            }
+            if (lastNumFreq > nums.length / 2) {
+                return lastNum;
             }
         }
         return 0;
