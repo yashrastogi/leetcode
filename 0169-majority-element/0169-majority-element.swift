@@ -1,13 +1,14 @@
 class Solution {
     func majorityElement(_ nums: [Int]) -> Int {
-        var counter = [Int: Int]()
+        var lastNum = Int.max, lastNumCount = 0
         for num in nums {
-            let temp = (counter[num] ?? 0) + 1
-            counter[num] = temp
-            if temp > nums.count / 2 {
-                return num
+            if lastNumCount == 0 {
+                lastNum = num
+                lastNumCount = 1
+            } else  {
+                lastNumCount += lastNum == num ? 1 : -1
             }
         }
-        return 0
+        return lastNum
     }
 }
