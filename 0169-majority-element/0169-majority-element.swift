@@ -1,16 +1,11 @@
 class Solution {
     func majorityElement(_ nums: [Int]) -> Int {
-        var nums = nums; nums.sort()
-        var lastNum = Int.max, lastNumFreq = 0
+        var counter = [Int: Int]()
         for num in nums {
-            if lastNum != num {
-                lastNum = num
-                lastNumFreq = 1
-            } else {
-                lastNumFreq += 1
-            }
-            if lastNumFreq > nums.count / 2 {
-                return lastNum
+            let temp = (counter[num] ?? 0) + 1
+            counter[num] = temp
+            if temp > nums.count / 2 {
+                return num
             }
         }
         return 0
