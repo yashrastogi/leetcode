@@ -3,10 +3,8 @@ class Solution {
         var counter = [Int: Int]()
         for num in nums {
             counter[num, default: 0] += 1
-        }
-        for (key, val) in counter {
-            if val > nums.count / 2 {
-                return key
+            if counter[num]! > nums.count / 2 {
+                return num
             }
         }
         return 0
