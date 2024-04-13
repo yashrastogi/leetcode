@@ -4,7 +4,7 @@ class Solution {
         for (int i = (int) Math.sqrt(n); i > 0; i--) {
             perfectSquares[(int) Math.sqrt(n) - i] = (int) Math.pow(i, 2);
         }
-        return numSquaresIterative(n, perfectSquares);
+        return numSquaresRecursive(n, perfectSquares);
     }
 
     public int numSquaresIterative(int n, int[] perfectSquares) {
