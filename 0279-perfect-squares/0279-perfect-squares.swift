@@ -5,7 +5,7 @@ class Solution {
             perfectSquares.append(Int(pow(Double(i), 2)))
         }
         
-        var memo: [Int] = Array(repeating: -1, count: n + 1)
+        var memo: [Int] = Array(repeating: -1, count: n)
         func recursion(_ csum: Int = 0) -> Int {
             guard csum <= n else { return n + 1 }
             if csum == n { return 0 }
@@ -17,7 +17,7 @@ class Solution {
             memo[csum] = result
             return result
         }
-            
-        return recursion()
+        let result = recursion()
+        return result
     }
 }
