@@ -1,8 +1,11 @@
 class Solution {
     func numSquares(_ n: Int) -> Int {
-        var memo: [Int] = Array(repeating: -1, count: n + 1)
         var perfectSquares: [Int] = []
+        for i in stride(from: Int(pow(Double(n), 1/2)), to: 0, by: -1) {
+            perfectSquares.append(Int(pow(Double(i), 2)))
+        }
         
+        var memo: [Int] = Array(repeating: -1, count: n + 1)
         func recursion(_ csum: Int = 0) -> Int {
             guard csum <= n else { return n + 1 }
             if csum == n { return 0 }
@@ -15,9 +18,6 @@ class Solution {
             return result
         }
             
-        for i in stride(from: Int(pow(Double(n), 1/2)), to: 0, by: -1) {
-            perfectSquares.append(Int(pow(Double(i), 2)))
-        }
         return recursion()
     }
 }
