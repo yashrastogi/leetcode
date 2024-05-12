@@ -1,11 +1,10 @@
 class Solution {
     func maxProfit(_ prices: [Int]) -> Int {
-        var minPrice = Int.max
-        var maxProfit = 0
-        for price in prices {
-            maxProfit = max(maxProfit, price - minPrice)
-            minPrice = min(minPrice, price)
-        }
-        return maxProfit
+        var mprofit = 0, minprice = Int.max
+        for p in prices {
+            mprofit = max(mprofit, p - minprice)
+            minprice = min(minprice, p)
+        }    
+        return mprofit
     }
 }
