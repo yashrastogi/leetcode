@@ -1,10 +1,7 @@
 class Solution {
     func rotate(_ nums: inout [Int], _ k: Int) {
-        var k = k
-        while k != 0 {
-            let temp = nums.popLast()!
-            nums = [temp] + nums
-            k -= 1
-        }
+        var k = k % nums.count
+        let numReversed = Array(nums.reversed())
+        nums = numReversed[0..<k].reversed() + nums[0..<(nums.count-k)]
     }
-}
+} 
