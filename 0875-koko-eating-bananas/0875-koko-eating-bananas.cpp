@@ -5,7 +5,7 @@ public:
         int answer = 0;
         while (min_bph <= max_bph) {
             int mid = (max_bph + min_bph) / 2;
-            int timeTaken = calculateTimeTaken(piles, mid);
+            long timeTaken = calculateTimeTaken(piles, mid);
             if (timeTaken <= h) {
                 answer = mid;
                 max_bph = mid - 1;
@@ -16,10 +16,10 @@ public:
         return answer;
     }
 
-    int calculateTimeTaken(vector<int>& piles, int bph) {
-        int time = 0;
+    long calculateTimeTaken(vector<int>& piles, int bph) {
+        long time = 0;
         for (int pile : piles) {
-            time += ceil((double)pile / bph);
+            time += ceil((double)pile / (double)bph);
         }
         return time;
     }
