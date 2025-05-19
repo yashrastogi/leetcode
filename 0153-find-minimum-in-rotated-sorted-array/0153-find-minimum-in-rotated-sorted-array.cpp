@@ -1,23 +1,25 @@
 class Solution {
-public:
+  public:
     int findMin(vector<int> &nums) {
-        int lo = 0, hi = nums.size() - 1, min_val = INT_MAX;
-        while(lo <= hi) {
-            int mid = lo + (hi-lo)/2;
-            min_val = min(min_val, nums[mid]);
-            if(nums[mid] > nums[hi]) {
-                // right out of order
-                lo = mid + 1;
-            } else if (nums[mid] < nums[lo]) {
-                // left out of order
-                hi = mid - 1;
-            }
-            if (nums[mid] >= nums[lo]) { 
-                // in order but need to go to left to find min
-                min_val = min(nums[lo], min_val);
-                hi = mid - 1;
-            }
+        return nums[getStartIndex(nums)];
+    }
+
+    int getStartIndex(vector<int> &nums, int lo = 0, int hi = INT_MAX) {
+        if (hi == INT_MAX)
+            hi = nums.size() - 1;
+        if (lo > hi)
+            return lo;
+        int mid = lo + (hi - lo) / 2;
+        if (nums[mid] < nums[lo]) {
+            int temp = getStartIndex(nums, lo, mid - 1);
+            if (nums[mid] < nums[temp])
+                return mid;
+            else
+                return temp;
         }
-        return min_val;
+        else if (nums[mid] > nums[hi]) 
+            return getStartIndex(nums, mid + 1, hi);
+        else 
+            return getStartIndex(nums, lo, mid - 1);
     }
 };
