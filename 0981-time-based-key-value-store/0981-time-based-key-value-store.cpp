@@ -1,6 +1,8 @@
+#define pis pair<int, string>
+
 class TimeMap {
 public:
-    unordered_map<string, vector<pair<int, string>>> data;
+    unordered_map<string, vector<pis>> data;
     TimeMap() {}
 
     void set(string key, string value, int timestamp) {
@@ -8,7 +10,7 @@ public:
     }
 
     string get(string key, int timestamp) {
-        vector<pair<int, string>>& target_vec = this->data[key];
+        vector<pis>& target_vec = this->data[key];
         int lo = 0, hi = target_vec.size() - 1;
         string ans = "";
         while (lo <= hi) {
