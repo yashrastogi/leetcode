@@ -6,7 +6,7 @@ public:
     TimeMap() {}
 
     void set(string key, string value, int timestamp) {
-        this->data[key].push_back({timestamp, value});
+        this->data[key].emplace_back(timestamp, value);
     }
 
     string get(string key, int timestamp) {
