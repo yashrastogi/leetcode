@@ -1,22 +1,26 @@
 class Solution {
 public:
-    int minEatingSpeed(std::vector<int>& piles, int h) {
-        cout.tie(0);
-        cin.tie(0);
-        ios_base::sync_with_stdio(0);
-        int lo = 1, hi = *max_element(piles.begin(), piles.end());
-        while (lo <= hi) {
-            int k = (hi - lo) / 2 + lo;
-            long kSum = 0;
-            for (const auto& pile : piles) {
-                kSum += std::ceil(static_cast<double>(pile) / k);
-            }
-            if (kSum <= h) {
-                hi = k - 1;
-            } else if (kSum > h) {
-                lo = k + 1;
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int min_bph = 1, max_bph = *max_element(piles.begin(), piles.end());
+        int answer = 0;
+        while (min_bph <= max_bph) {
+            int mid = (max_bph + min_bph) / 2;
+            int timeTaken = calculateTimeTaken(piles, mid);
+            if (timeTaken <= h) {
+                answer = mid;
+                max_bph = mid - 1;
+            } else {
+                min_bph = mid + 1;
             }
         }
-        return lo;
+        return answer;
+    }
+
+    int calculateTimeTaken(vector<int>& piles, int bph) {
+        int time = 0;
+        for (int pile : piles) {
+            time += ceil((double)pile / bph);
+        }
+        return time;
     }
 };
