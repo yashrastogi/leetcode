@@ -12,35 +12,45 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        auto curr = head;
-        vector<ListNode*> list;
-        while(curr) {
-            list.push_back(curr);
-            curr = curr->next;
+        if (head->next == nullptr)
+            return;
+        auto slow = head, fast = head, prev_slow = head;
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            prev_slow = slow;
+            slow = slow->next;
         }
+        prev_slow->next = nullptr;
+        auto curr = slow;
+        ListNode* prev = nullptr;
+        ListNode* temp = nullptr;
+        while (curr) {
+            temp = curr->next; // 8, temp=null
+            curr->next = prev; // 6->null, 8->6
+            prev = curr;       // prev=6, prev=8
+            curr = temp;       // curr=8, curr=null
+        }
+        // prev is start of reversed half
         bool flag = true;
-        ListNode *temp;
-        int i = 0, j = list.size() - 1;
-        while(i < j) {
-            // cout << i << " " << j << endl;
-            if(flag) {
-                list[i]->next = list[j]; // 2->8 // 4->6
-                i++; // 4
+        auto second = prev, first = head;
+        while (first && second) {
+            if (flag) {
+                temp = first->next;
+                first->next = second;
+                first = temp;
                 flag = false;
             } else {
-                list[j]->next = list[i]; // 8->4
-                j--; // 6
+                temp = second->next;
+                second->next = first;
+                second = temp;
                 flag = true;
             }
         }
-        if(flag) { list[j]->next = nullptr; }
-        else { list[i]->next = nullptr; }
-        // 2->8->4->6
     }
 };
 
 /* NOTES:
-0->1->2->3->4
-
-0->4->1->3->2
+[0, 1, 2, 3, 4, 5]
+[0, 1, 2, 5, 4, 3]
+[0->5->1->2->4->2->3]
 */
