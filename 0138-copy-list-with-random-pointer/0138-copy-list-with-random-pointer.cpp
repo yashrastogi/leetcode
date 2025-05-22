@@ -12,8 +12,7 @@ class Solution {
         // Use the mapping of original to copy nodes to set random pointers
         copyNodeCurr = copyNodeHead->next;
         for (auto originalNode = head; originalNode; originalNode = originalNode->next) {
-            copyNodesMap[originalNode]->random =
-                copyNodesMap[originalNode->random];
+            copyNodesMap[originalNode]->random = copyNodesMap[originalNode->random];
             copyNodeCurr = copyNodeCurr->next;
         }
         return copyNodeHead->next;
