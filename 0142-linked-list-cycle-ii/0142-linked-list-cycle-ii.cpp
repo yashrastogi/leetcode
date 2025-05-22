@@ -12,15 +12,14 @@ public:
         if (!head || !head->next)
             return nullptr;
 
-        auto slow = head;
-        auto fast = head;
+        auto fast = head, slow = head;
         while (fast && fast->next) {
             fast = fast->next->next;
             slow = slow->next;
             if (slow == fast)
                 break;
         }
-        if (slow != fast)
+        if (fast != slow)
             return nullptr;
         slow = head;
         while (slow != fast) {
