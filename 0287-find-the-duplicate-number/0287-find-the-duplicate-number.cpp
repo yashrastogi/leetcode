@@ -1,6 +1,6 @@
 class Solution {
-  public:
-    int findDuplicate(vector<int> &nums) {
+public:
+    int findDuplicate(vector<int>& nums) {
         int i = 0, j = 0;
         while (true) {
             i = nums[i];
@@ -14,6 +14,6 @@ class Solution {
                 return i;
             }
         }
-        return 0;      
+        return 0;
     }
 };
