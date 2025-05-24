@@ -30,7 +30,7 @@ public:
             if (listhead->next) {
                 heap.push({listhead->next->val, listhead->next});
             }
-            // delete (listhead);
+            delete (listhead);
         }
         return head->next;
     }
