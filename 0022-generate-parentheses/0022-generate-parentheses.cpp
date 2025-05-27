@@ -3,11 +3,12 @@ public:
     vector<string> substrings;
     
     vector<string> generateParenthesis(int n) {
-        recurse(0, 2 * n, "", 0, 0);
+        stack<char> brackets;
+        recurse(0, 2 * n, "", 0, 0, brackets);
         return substrings;
     }
 
-    void recurse(int index, int maxLen, string temp, int open, int close) { 
+    void recurse(int index, int maxLen, string temp, int open, int close, stack<char> &brackets) { 
         // ) stack size nil invalid string
         if(index == maxLen) {
             if(open == close && close == maxLen/2)
@@ -17,10 +18,18 @@ public:
         }
         // cout << temp << endl;
         // open/close cant be more than n 
-        if(open + 1 <= maxLen / 2)
-            recurse(index + 1, maxLen, temp + "(", open + 1, close);
-        if(close + 1 <= maxLen / 2)
-            recurse(index + 1, maxLen, temp + ")", open, close + 1);
+        
+        
+        if(open + 1 <= maxLen / 2) {
+            brackets.push('(');
+            recurse(index + 1, maxLen, temp + "(", open + 1, close, brackets);
+            brackets.pop();
+        }
+        if(close + 1 <= maxLen / 2) {
+            if(brackets.size()) {
+                recurse(index + 1, maxLen, temp + ")", open, close + 1, brackets);
+            }
+        }
     }
 
     bool isBalanced(string brackets) {
