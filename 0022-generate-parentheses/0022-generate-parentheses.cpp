@@ -25,7 +25,7 @@ public:
             recurse(index + 1, maxLen, temp + "(", open + 1, close, brackets);
             brackets.pop();
         }
-        if(close + 1 <= maxLen / 2) {
+        if(close < open && close + 1 <= maxLen / 2) {
             if(brackets.size()) {
                 recurse(index + 1, maxLen, temp + ")", open, close + 1, brackets);
             }
