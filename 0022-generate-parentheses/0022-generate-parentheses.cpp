@@ -15,11 +15,11 @@ public:
             return;
         }
 
-        if (close < open) {
-            recurse(index + 1, maxLen, temp + ")", open, close + 1);
-        }
         if (open + 1 <= maxLen / 2) {
             recurse(index + 1, maxLen, temp + "(", open + 1, close);
+        }
+        if (close < open) {
+            recurse(index + 1, maxLen, temp + ")", open, close + 1);
         }
     }
 
