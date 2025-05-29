@@ -15,20 +15,23 @@ class Solution {
             monoDec.push(i);
         }
         while (monoDec.size()) monoDec.pop();
-        vector<int> left(n, -1);
         for (int i = n - 1; i >= 0; i--) {
             while (monoDec.size() && heights[monoDec.top()] > heights[i]) {
-                left[monoDec.top()] = i + 1;
+                int j = monoDec.top(); // index j's left boundary is i + 1
+                int leftBoundary = i + 1;
+                int rightBoundary = (right[j] == -1) ? n - 1 : right[j];
+                maxArea = max(maxArea, (rightBoundary - leftBoundary + 1) * heights[j]);
                 monoDec.pop();
             }
             monoDec.push(i);
         }
-        for (int i = 0; i < n; i++) {
-            int righti = right[i], lefti = left[i];
-            if (righti == -1) righti = heights.size() - 1;
-            if (lefti == -1) lefti = 0;
-            int width = righti - lefti + 1;
-            maxArea = max(maxArea, width * heights[i]);
+
+        while(monoDec.size()) {
+            int j = monoDec.top();
+            int leftBoundary = 0;
+            int rightBoundary = (right[j] == -1) ? n - 1 : right[j];
+            maxArea = max(maxArea, (rightBoundary - leftBoundary + 1) * heights[j]);
+            monoDec.pop();
         }
 
         return maxArea;
