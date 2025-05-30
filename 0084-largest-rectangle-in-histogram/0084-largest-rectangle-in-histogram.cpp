@@ -1,39 +1,37 @@
-
 class Solution {
-   public:
-    int largestRectangleArea(vector<int>& heights) {
-        if (!heights.size()) return 0;
-        int n = heights.size();
+public:
+    int largestRectangleArea(vector<int>& h) {
+        int n = h.size();
+        if (n == 0)
+            return 0;
         int maxArea = -INT_MAX;
-        vector<int> right(n, -1);
-        stack<int> monoDec;
+        stack<int> s;
         for (int i = 0; i < n; i++) {
-            while (monoDec.size() && heights[monoDec.top()] > heights[i]) {
-                right[monoDec.top()] = i - 1;
-                monoDec.pop();
+            while (s.size() && h[s.top()] > h[i]) {
+                /*
+                    enter when stack top height is greater than current index
+                   height right boundary from that higher height bar is just one
+                   minus index choose stack popped bar as minimum height and
+                   expand left/right
+                */
+                int height = h[s.top()];
+                s.pop();
+                // index i - 1 right boundary add 1 for width
+                int width = (i - 1) + 1;
+                // left boundary is stack top + 1 since we popped the current
+                // height bar, if empty stack no left boundary
+                width -= (s.empty()) ? 0 : s.top() + 1;
+                maxArea = max(maxArea, width * height);
             }
-            monoDec.push(i);
+            s.push(i);
         }
-        while (monoDec.size()) monoDec.pop();
-        for (int i = n - 1; i >= 0; i--) {
-            while (monoDec.size() && heights[monoDec.top()] > heights[i]) {
-                int j = monoDec.top(); // index j's left boundary is i + 1
-                int leftBoundary = i + 1;
-                int rightBoundary = (right[j] == -1) ? n - 1 : right[j];
-                maxArea = max(maxArea, (rightBoundary - leftBoundary + 1) * heights[j]);
-                monoDec.pop();
-            }
-            monoDec.push(i);
+        while (s.size()) {
+            int height = h[s.top()];
+            s.pop();
+            int width = n;
+            width -= (s.empty()) ? 0 : s.top() + 1;
+            maxArea = max(maxArea, width * height);
         }
-
-        while(monoDec.size()) {
-            int j = monoDec.top();
-            int leftBoundary = 0;
-            int rightBoundary = (right[j] == -1) ? n - 1 : right[j];
-            maxArea = max(maxArea, (rightBoundary - leftBoundary + 1) * heights[j]);
-            monoDec.pop();
-        }
-
         return maxArea;
     }
 };
