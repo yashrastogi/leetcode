@@ -9,7 +9,7 @@ public:
         for (int i = 0; i < n; i++) {
             while (s.size() && h[s.top()] > h[i]) {
                 /*
-                    enter when stack top height is greater than current index
+                   enter when stack top height is greater than current index
                    height right boundary from that higher height bar is just one
                    minus index choose stack popped bar as minimum height and
                    expand left/right
@@ -28,6 +28,7 @@ public:
         while (s.size()) {
             int height = h[s.top()];
             s.pop();
+            // no right boundary for elements left in stack
             int width = n;
             width -= (s.empty()) ? 0 : s.top() + 1;
             maxArea = max(maxArea, width * height);
