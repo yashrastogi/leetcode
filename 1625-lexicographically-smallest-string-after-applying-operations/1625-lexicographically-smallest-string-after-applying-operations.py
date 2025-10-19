@@ -1,16 +1,26 @@
 class Solution:
     def findLexSmallestString(self, s: str, a: int, b: int) -> str:
-        def rotateNum(num, times):
-            if times <= 0:
-                return num
-            last_digit = num % 10
-            digits = 0
-            temp = num
-            while temp > 0:
-                temp = temp // 10
-                digits += 1
-            new_num = (num // 10) + last_digit * pow(10, digits - 1)
-            return rotateNum(new_num, times - 1)
+        def rotateNum(num_str, times):
+            num_l = list(num_str)
+            for _ in range(times):
+                temp = num_l.pop(-1)
+                num_l.insert(0, temp)
+            return "".join(num_l)
 
-        def addDigit(num, n2):
-            num_l = str(num).split()
+        def addDigit(num_str, n2):
+            num_l = list(num_str)
+            for i in range(1, len(num_l), 2):
+                num_l[i] = str((int(num_l[i]) + n2) % 10)
+            return "".join(num_l)
+
+        visited = set()
+
+        def dfs(s):
+            if s in visited:
+                return
+            visited.add(s)
+            dfs(rotateNum(s, b))
+            dfs(addDigit(s, a))
+
+        dfs(s)
+        return min(visited)
