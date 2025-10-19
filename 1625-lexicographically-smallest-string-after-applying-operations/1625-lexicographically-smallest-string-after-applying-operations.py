@@ -13,14 +13,12 @@ class Solution:
                 num_l[i] = str((int(num_l[i]) + n2) % 10)
             return "".join(num_l)
 
-        visited = set()
-
-        def dfs(s):
+        def dfs(s, visited=set()):
             if s in visited:
                 return
             visited.add(s)
-            dfs(rotateNum(s, b))
-            dfs(addDigit(s, a))
+            dfs(rotateNum(s, b), visited)
+            dfs(addDigit(s, a), visited)
+            return visited
 
-        dfs(s)
-        return min(visited)
+        return min(dfs(s))
