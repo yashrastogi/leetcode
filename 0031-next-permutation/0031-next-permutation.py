@@ -2,13 +2,6 @@ class Solution:
     def nextPermutation(T, nums: List[int]) -> None:
         n = len(nums)
 
-        def reverse():
-            i, j = 0, n - 1
-            while i < j:
-                nums[i], nums[j] = nums[j], nums[i]
-                i += 1
-                j -= 1
-
         def fix_window(i):
             # if increasing trend broke at i then find next larger el to right of i
             min_i = i + 1
@@ -32,5 +25,5 @@ class Solution:
                 fix_window(i)
                 break
             elif i == 0:
-                reverse()
+                nums.reverse()
             last_seen_max = max(last_seen_max, nums[i])
