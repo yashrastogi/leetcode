@@ -26,9 +26,7 @@ class Solution:
             dp[0] = 0
             for i in range(1, len(dp)):
                 for coin in coins:
-                    if coin > i:
-                        break
-                    if i - coin >= 0:
+                    if coin <= i:
                         dp[i] = min(dp[i], 1 + dp[i - coin])
             r = dp[amount]
             if r == float("inf"):
