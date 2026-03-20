@@ -20,17 +20,19 @@ class Solution:
             if r == float("inf"):
                 return -1
             return r
-        
+
         def bottomUp():
-            dp = [float('inf')] * (amount + 1)
+            dp = [float("inf")] * (amount + 1)
             dp[0] = 0
             for i in range(1, len(dp)):
                 for coin in coins:
+                    if coin > i:
+                        break
                     if i - coin >= 0:
                         dp[i] = min(dp[i], 1 + dp[i - coin])
             r = dp[amount]
             if r == float("inf"):
                 return -1
             return r
-            
+
         return bottomUp()
