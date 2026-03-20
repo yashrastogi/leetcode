@@ -1,5 +1,6 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
+        coins.sort(reverse=True)
         memo = {}
 
         def rec(d):
