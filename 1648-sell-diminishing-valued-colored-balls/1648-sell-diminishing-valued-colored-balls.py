@@ -5,15 +5,14 @@ class Solution:
             return ((end - start + 1) * (start + end)) // 2
 
         heap = []
-        [heappush_max(heap, i) for i in inventory]
+        [heappush_max(heap, (i, 1)) for i in inventory]
         profit = 0
-        while orders > 0 and heap[0] > 0:
-            top_pile = heappop_max(heap)
-            count = 1
-            while heap and heap[0] == top_pile:
-                count += 1
+        while orders > 0 and heap[0][0] > 0:
+            top_pile, count = heappop_max(heap)
+            while heap and heap[0][0] == top_pile:
+                count += heap[0][1]
                 heappop_max(heap)
-            next_pile = heap[0] if heap else 0
+            next_pile = heap[0][0] if heap else 0
             items_to_take = min(count, orders)
 
             levels_to_sell = 1
@@ -23,7 +22,5 @@ class Solution:
             profit = (profit + items_to_take * calcSum(top_pile, levels_to_sell)) % (
                 10**9 + 7
             )
-            while count > 0:
-                heappush_max(heap, top_pile - levels_to_sell)
-                count -= 1
+            heappush_max(heap, (top_pile - levels_to_sell, count))
         return profit
