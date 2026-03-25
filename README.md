@@ -13,10 +13,12 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
+| [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
 ## Breadth-First Search
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
+| [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -49,6 +51,7 @@
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 | [2462-total-cost-to-hire-k-workers](https://github.com/yashrastogi/leetcode/tree/main/2462-total-cost-to-hire-k-workers/) | Medium |
 ## Two Pointers
@@ -66,9 +69,18 @@
 ## Graph Theory
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
 | [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
 ## Minimum Spanning Tree
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
+## Depth-First Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
+## Shortest Path
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
 <!---LeetCode Topics End-->
