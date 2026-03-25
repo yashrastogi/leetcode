@@ -8,7 +8,7 @@ class Solution:
 
         n = len(points)
         visited = set()
-        mst_edges = []
+        # mst_edges = []
         cost = 0
         min_heap = [(0, 0, -1)]  # weight,node,parent
         while len(visited) < n:
@@ -17,8 +17,8 @@ class Solution:
                 continue
             cost += w
             visited.add(no)
-            if p != -1:
-                mst_edges.append((w, (points[p], points[no])))
+            # if p != -1:
+            #     mst_edges.append((w, (points[p], points[no])))
             for i in range(n):
                 if i not in visited:
                     heappush(min_heap, (manD(points[no], points[i]), i, no))
