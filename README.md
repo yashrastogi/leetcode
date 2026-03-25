@@ -6,6 +6,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
+| [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 | [2462-total-cost-to-hire-k-workers](https://github.com/yashrastogi/leetcode/tree/main/2462-total-cost-to-hire-k-workers/) | Medium |
 ## Dynamic Programming
@@ -58,4 +59,16 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2462-total-cost-to-hire-k-workers](https://github.com/yashrastogi/leetcode/tree/main/2462-total-cost-to-hire-k-workers/) | Medium |
+## Union-Find
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
+## Graph Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
+## Minimum Spanning Tree
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
 <!---LeetCode Topics End-->
