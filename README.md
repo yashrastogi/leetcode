@@ -6,6 +6,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
+| [0452-minimum-number-of-arrows-to-burst-balloons](https://github.com/yashrastogi/leetcode/tree/main/0452-minimum-number-of-arrows-to-burst-balloons/) | Medium |
 | [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 | [2462-total-cost-to-hire-k-workers](https://github.com/yashrastogi/leetcode/tree/main/2462-total-cost-to-hire-k-workers/) | Medium |
@@ -30,6 +31,7 @@
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0452-minimum-number-of-arrows-to-burst-balloons](https://github.com/yashrastogi/leetcode/tree/main/0452-minimum-number-of-arrows-to-burst-balloons/) | Medium |
 | [1081-smallest-subsequence-of-distinct-characters](https://github.com/yashrastogi/leetcode/tree/main/1081-smallest-subsequence-of-distinct-characters/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 ## Monotonic Stack
@@ -47,6 +49,7 @@
 ## Sorting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0452-minimum-number-of-arrows-to-burst-balloons](https://github.com/yashrastogi/leetcode/tree/main/0452-minimum-number-of-arrows-to-burst-balloons/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
