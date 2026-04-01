@@ -9,6 +9,7 @@
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
 | [0452-minimum-number-of-arrows-to-burst-balloons](https://github.com/yashrastogi/leetcode/tree/main/0452-minimum-number-of-arrows-to-burst-balloons/) | Medium |
 | [0721-accounts-merge](https://github.com/yashrastogi/leetcode/tree/main/0721-accounts-merge/) | Medium |
+| [0934-shortest-bridge](https://github.com/yashrastogi/leetcode/tree/main/0934-shortest-bridge/) | Medium |
 | [1584-min-cost-to-connect-all-points](https://github.com/yashrastogi/leetcode/tree/main/1584-min-cost-to-connect-all-points/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 | [2462-total-cost-to-hire-k-workers](https://github.com/yashrastogi/leetcode/tree/main/2462-total-cost-to-hire-k-workers/) | Medium |
@@ -24,6 +25,7 @@
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
 | [0721-accounts-merge](https://github.com/yashrastogi/leetcode/tree/main/0721-accounts-merge/) | Medium |
 | [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
+| [0934-shortest-bridge](https://github.com/yashrastogi/leetcode/tree/main/0934-shortest-bridge/) | Medium |
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -93,6 +95,7 @@
 | ------- | ------- |
 | [0721-accounts-merge](https://github.com/yashrastogi/leetcode/tree/main/0721-accounts-merge/) | Medium |
 | [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
+| [0934-shortest-bridge](https://github.com/yashrastogi/leetcode/tree/main/0934-shortest-bridge/) | Medium |
 ## Shortest Path
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -101,4 +104,8 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0721-accounts-merge](https://github.com/yashrastogi/leetcode/tree/main/0721-accounts-merge/) | Medium |
+## Matrix
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0934-shortest-bridge](https://github.com/yashrastogi/leetcode/tree/main/0934-shortest-bridge/) | Medium |
 <!---LeetCode Topics End-->
