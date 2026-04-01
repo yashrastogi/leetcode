@@ -28,7 +28,7 @@ class Solution:
         q = deque()
         for p in island_1:
             q.append((0, p))
-        visited = island_1.copy()
+        visited = island_1
         while q:
             d, (i, j) = q.popleft()
             for x, y in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
