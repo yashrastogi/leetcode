@@ -5,6 +5,7 @@
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0198-house-robber](https://github.com/yashrastogi/leetcode/tree/main/0198-house-robber/) | Medium |
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
 | [0452-minimum-number-of-arrows-to-burst-balloons](https://github.com/yashrastogi/leetcode/tree/main/0452-minimum-number-of-arrows-to-burst-balloons/) | Medium |
 | [0721-accounts-merge](https://github.com/yashrastogi/leetcode/tree/main/0721-accounts-merge/) | Medium |
@@ -14,6 +15,7 @@
 ## Dynamic Programming
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0198-house-robber](https://github.com/yashrastogi/leetcode/tree/main/0198-house-robber/) | Medium |
 | [0322-coin-change](https://github.com/yashrastogi/leetcode/tree/main/0322-coin-change/) | Medium |
 | [0787-cheapest-flights-within-k-stops](https://github.com/yashrastogi/leetcode/tree/main/0787-cheapest-flights-within-k-stops/) | Medium |
 ## Breadth-First Search
