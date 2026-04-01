@@ -30,17 +30,22 @@ class Solution:
 
         q = [(0, p) for p in island_1]
         visited = set()
-        min_dist = float("inf")
         while q:
             depth, (i, j) = q.pop(0)
-            if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]) or (i, j) in visited:
+            if (
+                i < 0
+                or j < 0
+                or i >= len(grid)
+                or j >= len(grid[0])
+                or (i, j) in visited
+            ):
                 continue
             if grid[i][j] == 1 and (i, j) not in island_1:
-                min_dist = min(min_dist, depth)
+                return depth - 1
             visited.add((i, j))
             q.append((depth + 1, (i + 1, j)))
             q.append((depth + 1, (i, j + 1)))
             q.append((depth + 1, (i - 1, j)))
             q.append((depth + 1, (i, j - 1)))
 
-        return min_dist - 1
+        return -1
