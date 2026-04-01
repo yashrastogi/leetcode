@@ -28,10 +28,12 @@ class Solution:
                     dfs(i, j)
                     found = True
 
-        q = [(0, p) for p in island_1]
+        q = deque()
+        for p in island_1:
+            q.append((0, p))
         visited = island_1.copy()
         while q:
-            d, (i, j) = q.pop(0)
+            d, (i, j) = q.popleft()
             for x, y in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
                 if (
                     0 <= x < len(grid)
