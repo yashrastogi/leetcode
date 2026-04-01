@@ -25,6 +25,7 @@
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0043-multiply-strings](https://github.com/yashrastogi/leetcode/tree/main/0043-multiply-strings/) | Medium |
 | [0721-accounts-merge](https://github.com/yashrastogi/leetcode/tree/main/0721-accounts-merge/) | Medium |
 | [1081-smallest-subsequence-of-distinct-characters](https://github.com/yashrastogi/leetcode/tree/main/1081-smallest-subsequence-of-distinct-characters/) | Medium |
 ## Stack
@@ -44,6 +45,7 @@
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0043-multiply-strings](https://github.com/yashrastogi/leetcode/tree/main/0043-multiply-strings/) | Medium |
 | [1648-sell-diminishing-valued-colored-balls](https://github.com/yashrastogi/leetcode/tree/main/1648-sell-diminishing-valued-colored-balls/) | Medium |
 ## Binary Search
 | Problem Name | Difficulty |
@@ -68,6 +70,7 @@
 ## Simulation
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0043-multiply-strings](https://github.com/yashrastogi/leetcode/tree/main/0043-multiply-strings/) | Medium |
 | [2462-total-cost-to-hire-k-workers](https://github.com/yashrastogi/leetcode/tree/main/2462-total-cost-to-hire-k-workers/) | Medium |
 ## Union-Find
 | Problem Name | Difficulty |
