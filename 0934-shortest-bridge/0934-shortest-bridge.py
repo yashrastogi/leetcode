@@ -1,6 +1,3 @@
-from pprint import pprint
-
-
 class Solution:
     def shortestBridge(self, grid: List[List[int]]) -> int:
         island_1 = set()
