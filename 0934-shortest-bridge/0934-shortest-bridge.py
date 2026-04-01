@@ -29,23 +29,19 @@ class Solution:
                     found = True
 
         q = [(0, p) for p in island_1]
-        visited = set()
+        visited = island_1.copy()
         while q:
-            depth, (i, j) = q.pop(0)
-            if (
-                i < 0
-                or j < 0
-                or i >= len(grid)
-                or j >= len(grid[0])
-                or (i, j) in visited
-            ):
-                continue
-            if grid[i][j] == 1 and (i, j) not in island_1:
-                return depth - 1
-            visited.add((i, j))
-            q.append((depth + 1, (i + 1, j)))
-            q.append((depth + 1, (i, j + 1)))
-            q.append((depth + 1, (i - 1, j)))
-            q.append((depth + 1, (i, j - 1)))
+            d, (i, j) = q.pop(0)
+            for x, y in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
+                if (
+                    0 <= x < len(grid)
+                    and 0 <= y < len(grid[0])
+                    and (x, y) not in visited
+                ):
+                    if grid[x][y] == 1:
+                        return d  # shortest bridge found
+
+                    visited.add((x, y))
+                    q.append((d + 1, (x, y)))
 
         return -1
